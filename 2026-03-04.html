@@ -703,6 +703,13 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 <div class="ft">ai-news-monitor · 16:40</div>
 </div><script>
+function togglePanel(id) {
+  document.querySelectorAll('.overlay').forEach(function(o) {
+    if (o.id === id + '-overlay') { o.classList.toggle('show'); }
+    else { o.classList.remove('show'); }
+  });
+}
+function closePanel(el) { el.closest('.overlay').classList.remove('show'); }
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.sort-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -718,10 +725,9 @@ document.addEventListener('DOMContentLoaded', function() {
       } else if (mode === 'category') {
         cards.sort(function(a,b){
           var order = {'AI':'01','SaaS':'02','DevTools':'03','Infra':'04','SEO':'05','电商':'06'};
-      var ta = a.querySelector('.tag') ? a.querySelector('.tag').textContent : '';
-      var oa = order[ta] || '99'+ta;
+          var ta = a.querySelector('.tag') ? a.querySelector('.tag').textContent : '';
           var tb = b.querySelector('.tag') ? b.querySelector('.tag').textContent : '';
-      var ob = order[tb] || '99'+tb;
+          var oa = order[ta] || '99'+ta; var ob = order[tb] || '99'+tb;
           if (oa !== ob) return oa.localeCompare(ob);
           return (b.dataset.time||'').localeCompare(a.dataset.time||'');
         });
