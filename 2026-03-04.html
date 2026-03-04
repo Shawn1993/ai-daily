@@ -41,6 +41,12 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 .st{color:#555;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .si:hover .st{color:#aaa}
 .ft{text-align:center;padding:20px 0;margin-top:10px;border-top:1px solid #0f0f0f;font-size:10px;color:#555}
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.filter-group{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.filter-label{font-size:10px;color:#555;margin-right:2px}
+.filter-btn{font-size:10px;color:#666;background:#080808;border:1px solid #181818;padding:3px 8px;border-radius:10px;cursor:pointer;transition:all .15s}
+.filter-btn:hover{border-color:#333;color:#aaa}
+.filter-btn.active{border-color:#555;color:#eee;background:#151515}
 .sort-bar{display:flex;align-items:center;gap:6px;margin-bottom:16px}
 .sort-label{font-size:11px;color:#777}
 .sort-btn{font-size:11px;color:#666;background:#080808;border:1px solid #181818;padding:4px 10px;border-radius:12px;cursor:pointer;transition:all .15s}
@@ -159,6 +165,11 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item">r/shopify</div>
 </div></div>
 
+<div class="filter-bar">
+<div class="filter-group"><span class="filter-label">分类</span><button class="filter-btn active" data-fk="topic" data-fv="all">全部</button><button class="filter-btn" data-fk="topic" data-fv="ai">AI</button><button class="filter-btn" data-fk="topic" data-fv="devtools">开发工具</button><button class="filter-btn" data-fk="topic" data-fv="ecommerce">电商</button><button class="filter-btn" data-fk="topic" data-fv="infra">基础设施</button><button class="filter-btn" data-fk="topic" data-fv="saas">SaaS</button><button class="filter-btn" data-fk="topic" data-fv="seo">SEO</button></div>
+<div class="filter-group"><span class="filter-label">类型</span><button class="filter-btn active" data-fk="type" data-fv="all">全部</button><button class="filter-btn" data-fk="type" data-fv="analysis">分析</button><button class="filter-btn" data-fk="type" data-fv="market">市场</button><button class="filter-btn" data-fk="type" data-fv="opensource">开源</button><button class="filter-btn" data-fk="type" data-fv="product">产品</button><button class="filter-btn" data-fk="type" data-fv="research">论文</button><button class="filter-btn" data-fk="type" data-fv="tutorial">实战</button></div>
+<div class="filter-group"><span class="filter-label">时间</span><button class="filter-btn active" data-fk="time" data-fv="all">全部</button><button class="filter-btn" data-fk="time" data-fv="today">今天</button><button class="filter-btn" data-fk="time" data-fv="yesterday">昨天</button><button class="filter-btn" data-fk="time" data-fv="3d">近3天</button></div>
+</div>
 <div class="sort-bar">
 <span class="sort-label">排序</span>
 <button class="sort-btn" data-mode="category">📂 分类</button>
@@ -733,7 +744,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </div>
 </div>
-<div class="ft">ai-news-monitor · 17:47</div>
+<div class="ft">ai-news-monitor · 18:31</div>
 </div><script>
 function togglePanel(id) {
   document.querySelectorAll('.overlay').forEach(function(o) {
@@ -767,5 +778,41 @@ document.addEventListener('DOMContentLoaded', function() {
       cards.forEach(function(c){container.appendChild(c)});
     });
   });
+  // === Filter ===
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      this.parentElement.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+      this.classList.add('active');
+      applyFilters();
+    });
+  });
 });
+
+function applyFilters() {
+  var topicVal='all', typeVal='all', timeVal='all';
+  document.querySelectorAll('.filter-btn.active').forEach(function(b) {
+    var k=b.dataset.fk, v=b.dataset.fv;
+    if(k==='topic') topicVal=v;
+    if(k==='type') typeVal=v;
+    if(k==='time') timeVal=v;
+  });
+  var now=new Date();
+  var todayStr=new Date(now.getTime()+8*3600000).toISOString().slice(0,10);
+  var yday=new Date(now.getTime()+8*3600000-86400000).toISOString().slice(0,10);
+  var d3=new Date(now.getTime()+8*3600000-3*86400000).toISOString().slice(0,10);
+  var count=0;
+  document.querySelectorAll('.card').forEach(function(card) {
+    var show=true;
+    if(topicVal!=='all'&&card.dataset.topic!==topicVal) show=false;
+    if(typeVal!=='all'&&card.dataset.type!==typeVal) show=false;
+    if(timeVal!=='all') {
+      var t=(card.dataset.time||'').slice(0,10);
+      if(timeVal==='today'&&t!==todayStr) show=false;
+      else if(timeVal==='yesterday'&&t!==yday) show=false;
+      else if(timeVal==='3d'&&t<d3) show=false;
+    }
+    card.style.display=show?'':'none';
+    if(show) count++;
+  });
+}
 </script></body></html>
