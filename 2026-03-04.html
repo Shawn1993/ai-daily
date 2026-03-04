@@ -40,6 +40,11 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 .st{color:#555;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .si:hover .st{color:#aaa}
 .ft{text-align:center;padding:20px 0;margin-top:10px;border-top:1px solid #0f0f0f;font-size:10px;color:#282828}
+.sort-bar{display:flex;align-items:center;gap:6px;margin-bottom:16px}
+.sort-label{font-size:11px;color:#444}
+.sort-btn{font-size:11px;color:#666;background:#080808;border:1px solid #181818;padding:4px 10px;border-radius:12px;cursor:pointer;transition:all .15s}
+.sort-btn:hover{border-color:#333;color:#aaa}
+.sort-btn.active{border-color:#555;color:#eee;background:#151515}
 @media(max-width:640px){.w{padding:10px 8px}.img{width:52px;height:52px;min-width:52px}.tt{font-size:13px}.tag{font-size:9px;min-width:36px}}
 </style></head><body>
 <div class="w">
@@ -53,8 +58,14 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="#devtools" class="ti" style="--c:#2563eb">🛠 开发工具 <span class="n">7</span></a>
 <a href="#infra" class="ti" style="--c:#0d9488">⚙️ 基础设施 <span class="n">3</span></a>
 </nav>
+<div class="sort-bar">
+<span class="sort-label">排序</span>
+<button class="sort-btn active" onclick="sortBy('category')">📂 分类</button>
+<button class="sort-btn" onclick="sortBy('time')">🕐 时间</button>
+<button class="sort-btn" onclick="sortBy('score')">🔥 重要度</button>
+</div>
 <section id="ai"><h2 style="--c:#7c3aed"><i></i>🤖 AI</h2>
-<div class="card hot">
+<div class="card hot" data-time="2026-03-04" data-score="10">
 <div class="row">
 <div class="img" style="background-image:url(https://ph-files.imgix.net/8bd8fc68-655a-470f-8204-0c263cbc0931.jpeg?auto=format&amp;amp;fit=crop&amp;amp;frame=1&amp;amp;h=512&amp;amp;w=1024)"></div>
 <div class="cnt">
@@ -75,7 +86,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rk8knf/qwen351" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-18B REAP: 50% Expert-Pruned</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.669471" data-score="9">
 <div class="row">
 <div class="img" style="background-image:url(https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini-3.1_flash_Lite_blog_keyword_metacard_d.width-1300.png)"></div>
 <div class="cnt">
@@ -92,7 +103,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-3-1-flash-lite/" target="_blank" class="si"><span class="bg" style="--c:#10a37f">官方</span><span class="sn">Google AI Blog</span><span class="st">Gemini 3.1 Flash-Lite (Google Blog)</span></a>
 </div>
 </div>
-<div class="card warm">
+<div class="card warm" data-time="1772599701.690262" data-score="6">
 <div class="row">
 <div class="img" style="background-image:url(https://platform.theverge.com/wp-content/uploads/sites/2/2025/04/STK269_ANTHROPIC_A.jpg?quality=90&amp;amp;strip=all&amp;amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;amp;w=1200)"></div>
 <div class="cnt">
@@ -108,7 +119,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.theverge.com/ai-artificial-intelligence/887885/anthropic-claude-memory-upgrade" target="_blank" class="si"><span class="bg" style="--c:#0a9e01">Verge</span><span class="sn">The Verge AI</span><span class="st">Anthropic upgrades Claude's memory to attract AI switchers</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.6795928" data-score="10">
 <div class="row">
 <div class="img" style="background-image:url(https://techcrunch.com/wp-content/uploads/2024/07/money-firehose.jpg?w=668)"></div>
 <div class="cnt">
@@ -124,7 +135,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://techcrunch.com/2026/03/02/a-married-founder-duos-company-14-ai" target="_blank" class="si"><span class="bg" style="--c:#0a9e01">TC</span><span class="sn">TechCrunch AI</span><span class="st">14.ai is replacing customer support teams at startups</span></a>
 </div>
 </div>
-<div class="card warm">
+<div class="card warm" data-time="1772599701.69096" data-score="7">
 <div class="row">
 <div class="img" style="background-image:url(https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25697396/STK071_APPLE_M.jpg?quality=90&amp;amp;strip=all&amp;amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;amp;w=1200)"></div>
 <div class="cnt">
@@ -140,7 +151,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.theverge.com/tech/887802/apple-ai-siri-google-servers" target="_blank" class="si"><span class="bg" style="--c:#0a9e01">Verge</span><span class="sn">The Verge AI</span><span class="st">Apple might use Google servers for upgraded AI Siri</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.724312" data-score="19">
 <div class="row">
 <div class="img imgf" style="--c:#7c3aed"><span>🤖</span></div>
 <div class="cnt">
@@ -156,7 +167,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.reddit.com/r/MachineLearning/comments/1rk66ay/p_" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/MachineLearning</span><span class="st">Real-time voice-to-voice with your LLM &amp; full reasoning</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.853825" data-score="12">
 <div class="row">
 <div class="img" style="background-image:url(https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png)"></div>
 <div class="cnt">
@@ -172,7 +183,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://arxiv.org/abs/2603.03194" target="_blank" class="si"><span class="bg" style="--c:#ffd21e">HF</span><span class="sn">HuggingFace Papers</span><span class="st">BeyondSWE: Can Current Code Agent Survive Beyond Single-Repo Bug Fixing?</span></a>
 </div>
 </div>
-<div class="card warm">
+<div class="card warm" data-time="1772599701.741814" data-score="5">
 <div class="row">
 <div class="img" style="background-image:url(https://static.arxiv.org/icons/twitter/arxiv-logo-twitter-square.png)"></div>
 <div class="cnt">
@@ -190,7 +201,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </section>
 <section id="seo"><h2 style="--c:#ea580c"><i></i>🔍 SEO</h2>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.838644" data-score="9">
 <div class="row">
 <div class="img" style="background-image:url(https://cdn.searchenginejournal.com/wp-content/uploads/2022/12/search-engine-journal-1x-63a425d735aa3-sej.png)"></div>
 <div class="cnt">
@@ -208,7 +219,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.searchenginejournal.com/how-to-build-an-ai-seo-strategy/" target="_blank" class="si"><span class="bg" style="--c:#1a6aff">SEJ</span><span class="sn">Search Engine Journal</span><span class="st">How To Build An AI SEO Strategy That Outlasts Tactics</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.837301" data-score="8">
 <div class="row">
 <div class="img" style="background-image:url(https://cdn.searchenginejournal.com/wp-content/uploads/2026/03/f45512eb-c804-4a21-a962-36f2bb65f4ce-560.jpeg)"></div>
 <div class="cnt">
@@ -225,7 +236,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.searchenginejournal.com/google-ai-generated-landing-page-patent/" target="_blank" class="si"><span class="bg" style="--c:#1a6aff">SEJ</span><span class="sn">Search Engine Journal</span><span class="st">Google AI Generated Landing Page Patent Limited To Shopping &amp; Ads</span></a>
 </div>
 </div>
-<div class="card warm">
+<div class="card warm" data-time="1772599701.832722" data-score="7">
 <div class="row">
 <div class="img" style="background-image:url(https://cdn.searchenginejournal.com/wp-content/uploads/2026/03/builderius-ai-129.jpg)"></div>
 <div class="cnt">
@@ -243,7 +254,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </section>
 <section id="ecommerce"><h2 style="--c:#d97706"><i></i>🛒 电商</h2>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.816294" data-score="8">
 <div class="row">
 <div class="img imgf" style="--c:#d97706"><span>🛒</span></div>
 <div class="cnt">
@@ -263,7 +274,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </section>
 <section id="saas"><h2 style="--c:#16a34a"><i></i>🚀 SaaS</h2>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.782316" data-score="14">
 <div class="row">
 <div class="img imgf" style="--c:#16a34a"><span>🚀</span></div>
 <div class="cnt">
@@ -279,7 +290,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.reddit.com/r/SaaS/comments/1rk95b9/i_posted_my_playbook" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SaaS</span><span class="st">My playbook for launching SaaS to $200K MRR - 6 month update</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.7899032" data-score="11">
 <div class="row">
 <div class="img imgf" style="--c:#16a34a"><span>🚀</span></div>
 <div class="cnt">
@@ -296,7 +307,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.reddit.com/r/indiehackers/comments/1rjtja0/what_" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/indiehackers</span><span class="st">10 days to make Google notice my product</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.820978" data-score="9">
 <div class="row">
 <div class="img" style="background-image:url(https://i0.wp.com/www.saastr.com/wp-content/uploads/2026/03/SaaStr-AI-The-Top-5-Issues-Managing-Multiple-Agents-in-Production.jpg?fit=960%2C540&amp;#038;quality=70&amp;#038;ssl=1)"></div>
 <div class="cnt">
@@ -312,7 +323,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.saastr.com/we-have-30-ai-agents-in-production-here-are-the-top-5-issues/" target="_blank" class="si"><span class="bg" style="--c:#6366f1">SaaStr</span><span class="sn">SaaStr Blog</span><span class="st">30 AI Agents in Production: Top 5 Issues No One Talks About</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.821749" data-score="11">
 <div class="row">
 <div class="img" style="background-image:url(https://i0.wp.com/www.saastr.com/wp-content/uploads/2026/03/Founder-Moving-On-scaled.jpg?fit=1000%2C667&amp;#038;quality=70&amp;#038;ssl=1)"></div>
 <div class="cnt">
@@ -330,7 +341,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </section>
 <section id="devtools"><h2 style="--c:#2563eb"><i></i>🛠 开发工具</h2>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.7509198" data-score="12">
 <div class="row">
 <div class="img" style="background-image:url(https://opengraph.githubassets.com/9b0dd3bc20689ef1049191c111ea37bf853a4162fa2ba0d74a5c1042f76e8c4d/AnyiWang/OpenCovibe)"></div>
 <div class="cnt">
@@ -346,7 +357,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://github.com/AnyiWang/OpenCovibe" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">OpenCovibe – a local-first desktop UI for Claude Code</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.843675" data-score="14">
 <div class="row">
 <div class="img imgf" style="--c:#2563eb"><span>🛠</span></div>
 <div class="cnt">
@@ -362,7 +373,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.reddit.com/r/micro_saas/comments/1rju8sd/i_replaced_my_dev_team" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">I replaced my dev team with 3 Claude Code agents</span></a>
 </div>
 </div>
-<div class="card warm">
+<div class="card warm" data-time="1772599701.704869" data-score="6">
 <div class="row">
 <div class="img imgf" style="--c:#2563eb"><span>🛠</span></div>
 <div class="cnt">
@@ -378,7 +389,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rjt4hh/mcp_server" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">MCP server that indexes codebases into a knowledge graph</span></a>
 </div>
 </div>
-<div class="card warm">
+<div class="card warm" data-time="1772599701.863639" data-score="7">
 <div class="row">
 <div class="img" style="background-image:url(https://opengraph.githubassets.com/15868a7d34a2502372b36459af9d6b663c2bfb3c9a036a8f7b79859d1af97784/K-Dense-AI/claude-scientific-skills)"></div>
 <div class="cnt">
@@ -394,7 +405,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://github.com/K-Dense-AI/claude-scientific-skills" target="_blank" class="si"><span class="bg" style="--c:#7c3aed">GitHub</span><span class="sn">GitHub Trending</span><span class="st">K-Dense-AI/claude-scientific-skills (798 stars today)</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.846334" data-score="8">
 <div class="row">
 <div class="img imgf" style="--c:#2563eb"><span>🛠</span></div>
 <div class="cnt">
@@ -410,7 +421,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.reddit.com/r/micro_saas/comments/1rka7rh/deploybase" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">Deploybase: Track real-time GPU and LLM pricing across all platforms</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.761353" data-score="8">
 <div class="row">
 <div class="img imgf" style="--c:#2563eb"><span>🛠</span></div>
 <div class="cnt">
@@ -426,7 +437,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.reddit.com/r/SideProject/comments/1rk0eb7/an_open_source" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SideProject</span><span class="st">Open-source Descript alternative - edit video by editing text</span></a>
 </div>
 </div>
-<div class="card warm">
+<div class="card warm" data-time="1772599701.666036" data-score="7">
 <div class="row">
 <div class="img imgf" style="--c:#2563eb"><span>🛠</span></div>
 <div class="cnt">
@@ -444,7 +455,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </section>
 <section id="infra"><h2 style="--c:#0d9488"><i></i>⚙️ 基础设施</h2>
-<div class="card warm">
+<div class="card warm" data-time="1772599701.77849" data-score="7">
 <div class="row">
 <div class="img imgf" style="--c:#0d9488"><span>⚙️</span></div>
 <div class="cnt">
@@ -460,7 +471,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://alternativeto.net/news/2026/3/chrome-webmcp-early-preview/" target="_blank" class="si"><span class="bg" style="--c:#e8503a">Alt</span><span class="sn">AlternativeTo</span><span class="st">Chrome WebMCP early preview: APIs to standardize AI agent website actions</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.8672068" data-score="10">
 <div class="row">
 <div class="img" style="background-image:url(https://opengraph.githubassets.com/bb3167d89004057b3199692d06ab45c72517df1c67ab66375b26292505f8cc43/alibaba/OpenSandbox)"></div>
 <div class="cnt">
@@ -476,7 +487,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://github.com/alibaba/OpenSandbox" target="_blank" class="si"><span class="bg" style="--c:#7c3aed">GitHub</span><span class="sn">GitHub Trending</span><span class="st">alibaba/OpenSandbox (1,150 stars today)</span></a>
 </div>
 </div>
-<div class="card hot">
+<div class="card hot" data-time="1772599701.753201" data-score="12">
 <div class="row">
 <div class="img" style="background-image:url(https://agentbus.org/og-image.png)"></div>
 <div class="cnt">
@@ -494,5 +505,39 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </section>
 
-<div class="ft">ai-news-monitor · 13:46</div>
-</div></body></html>
+<div class="ft">ai-news-monitor · 14:03</div>
+</div><script>
+function sortBy(mode) {
+  document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  const w = document.querySelector('.w');
+  const sections = [...w.querySelectorAll('section')];
+  const cards = [];
+  sections.forEach(s => {
+    [...s.querySelectorAll('.card')].forEach(c => {
+      cards.push({el:c.cloneNode(true), time:c.dataset.time||'', score:parseInt(c.dataset.score)||0,
+        section:s.id});
+    });
+  });
+  if (mode === 'category') {
+    // restore original: show sections, put cards back
+    sections.forEach(s => {s.style.display=''; s.querySelectorAll('.card').forEach(c=>c.style.display='');});
+    let flat = w.querySelector('#flat-view');
+    if(flat) flat.remove();
+    return;
+  }
+  // hide sections
+  sections.forEach(s => s.style.display='none');
+  // remove old flat view
+  let flat = w.querySelector('#flat-view');
+  if(flat) flat.remove();
+  // sort
+  if (mode === 'time') cards.sort((a,b) => b.time.localeCompare(a.time));
+  if (mode === 'score') cards.sort((a,b) => b.score - a.score);
+  // render
+  flat = document.createElement('div');
+  flat.id = 'flat-view';
+  cards.forEach(c => flat.appendChild(c.el));
+  w.querySelector('.ft').before(flat);
+}
+</script></body></html>
