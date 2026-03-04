@@ -46,12 +46,118 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 .sort-btn{font-size:11px;color:#666;background:#080808;border:1px solid #181818;padding:4px 10px;border-radius:12px;cursor:pointer;transition:all .15s}
 .sort-btn:hover{border-color:#333;color:#aaa}
 .sort-btn.active{border-color:#555;color:#eee;background:#151515}
+.badge{cursor:pointer;transition:all .15s}
+.badge:hover{border-color:#444;color:#ccc}
+.panel{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:10px;margin-bottom:14px;padding:10px 14px;max-height:300px;overflow-y:auto}
+.panel-head{font-size:12px;color:#999;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.panel-close{cursor:pointer;font-size:16px;color:#555;padding:0 4px}
+.panel-close:hover{color:#fff}
+.pl-item{font-size:11px;color:#aaa;padding:3px 0;display:flex;align-items:center;gap:6px}
+.pl-count{font-size:10px;color:#555;min-width:20px;text-align:right}
 @media(max-width:640px){.w{padding:10px 8px}.img{width:52px;height:52px;min-width:52px}.tt{font-size:13px}.tag{font-size:9px;min-width:36px}}
 </style></head><body>
 <div class="w">
 <div class="hdr"><h1>AI · SEO · 电商 日报</h1>
 <p>2026年03月04日 · 48h 动态</p>
-<div class="m"><span>🔥 32 主题</span><span>📊 53 信源</span><span>📡 25 渠道</span></div></div>
+<div class="m">
+<span class="badge" onclick="togglePanel('topic-list')">🔥 32 主题</span>
+<span class="badge" onclick="togglePanel('source-list')">📊 53 信源</span>
+<span class="badge" onclick="togglePanel('channel-list')">📡 25 渠道</span>
+</div></div>
+
+<div id="topic-list" class="panel" style="display:none">
+<div class="panel-head">🔥 主题列表 <span class="panel-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Qwen 3.5 全系列开源，MoE 4B 可手机运行，社区已跑通 vibe coding</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Nover Studio：AI 媒体制作的 Figma（Product Hunt 上线）</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Apple M5 Pro/Max 发布，LLM 推理速度提升 4 倍</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Kira：Android 端 AI Agent，Termux 环境运行（HN Show）</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Claude-brain 开源：跨设备同步 Claude Code 工作记忆（HN Show）</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Habit App 预发布 16 用户达 91% 14 天留存率</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Deploybase 上线：实时追踪全平台 GPU 与 LLM API 价格</div>
+<div class="pl-item"><span class="tag" style="--c:#d97706">电商</span> 电商实战：RPA 自动化库存 + UGC 低成本测试 + Shopify 转化优化</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> SaaS 获客实验：$350 FB 广告 0 转化 vs 10 天 SEO 自然收录</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> SaaS 从 0 到 $200K MRR Playbook：6 个月后数据验证更新</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> AI 初创公司以两种不同估值出售同一股权</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 实时语音 LLM 全栈开源方案，100% 本地运行无需 API</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> OpenSandbox 开源：阿里推出 AI Agent 安全沙箱（1150 stars）</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> claude-scientific-skills 开源：Claude 科研能力工具包（798 stars）</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Draft-Thinking：长链推理 LLM 的高效推理学习方法</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> BeyondSWE：首个多仓库 Code Agent 评估基准</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> 开源 Descript 替代品：文本编辑视频，100% 离线运行</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> GPT-5.3 Instant 发布，OpenAI 优化日常对话体验</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Claude Code 推出语音模式，Anthropic 强化开发者体验</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 30 个 AI Agent 生产部署的 5 大真实痛点</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Solo 创始人用 3 个 Claude Code Agent 替代开发团队</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Google 发布 Gemini 3.1 Flash-Lite，主打低成本大规模推理</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> MCP 代码知识图谱：将代码库索引后 Token 用量降低 120 倍</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Anthropic 为 Claude 新增跨会话持久记忆，吸引用户迁移</div>
+<div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> Builderius WordPress 页面构建器集成 Claude AI</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Micro SaaS 创始人 Day 210 达到 300 付费用户</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Cekura (YC F24) 上线：专做 AI Agent 语音和聊天测试监控</div>
+<div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> Google AI Overview 引用策略巨变：Top 排名页面引用率大幅下降</div>
+<div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> Google AI 生成落地页专利：仅限 Shopping 广告场景</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Cursor 年化收入突破 $20 亿，AI IDE 赛道全面验证</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 14.ai 用 AI 替代初创公司客服团队，获 TechCrunch 报道</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Chrome WebMCP 预览版发布，AI Agent 可通过标准 API 操作网页</div>
+</div>
+
+<div id="source-list" class="panel" style="display:none">
+<div class="panel-head">📊 信源列表 <span class="panel-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
+<div class="pl-item"><span class="pl-count">7</span> r/LocalLLaMA</div>
+<div class="pl-item"><span class="pl-count">5</span> TechCrunch</div>
+<div class="pl-item"><span class="pl-count">5</span> Official (auto-traced)</div>
+<div class="pl-item"><span class="pl-count">5</span> r/micro_saas</div>
+<div class="pl-item"><span class="pl-count">4</span> Search Engine Journal</div>
+<div class="pl-item"><span class="pl-count">2</span> The Verge</div>
+<div class="pl-item"><span class="pl-count">2</span> AlternativeTo</div>
+<div class="pl-item"><span class="pl-count">2</span> GitHub Trending</div>
+<div class="pl-item"><span class="pl-count">2</span> HN Show</div>
+<div class="pl-item"><span class="pl-count">2</span> HuggingFace Papers</div>
+<div class="pl-item"><span class="pl-count">2</span> r/SaaS</div>
+<div class="pl-item"><span class="pl-count">2</span> r/ecommerce</div>
+<div class="pl-item"><span class="pl-count">1</span> HuggingFace</div>
+<div class="pl-item"><span class="pl-count">1</span> Product Hunt</div>
+<div class="pl-item"><span class="pl-count">1</span> DeepMind Blog</div>
+<div class="pl-item"><span class="pl-count">1</span> Google AI Blog</div>
+<div class="pl-item"><span class="pl-count">1</span> OpenAI Blog</div>
+<div class="pl-item"><span class="pl-count">1</span> r/MachineLearning</div>
+<div class="pl-item"><span class="pl-count">1</span> ArXiv cs.AI</div>
+<div class="pl-item"><span class="pl-count">1</span> SaaStr Blog</div>
+<div class="pl-item"><span class="pl-count">1</span> r/indiehackers</div>
+<div class="pl-item"><span class="pl-count">1</span> HackerNews</div>
+<div class="pl-item"><span class="pl-count">1</span> r/SideProject</div>
+<div class="pl-item"><span class="pl-count">1</span> Ahrefs Blog</div>
+<div class="pl-item"><span class="pl-count">1</span> r/shopify</div>
+</div>
+
+<div id="channel-list" class="panel" style="display:none">
+<div class="panel-head">📡 渠道列表 <span class="panel-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
+<div class="pl-item">Ahrefs Blog</div>
+<div class="pl-item">AlternativeTo</div>
+<div class="pl-item">ArXiv cs.AI</div>
+<div class="pl-item">DeepMind Blog</div>
+<div class="pl-item">GitHub Trending</div>
+<div class="pl-item">Google AI Blog</div>
+<div class="pl-item">HN Show</div>
+<div class="pl-item">HackerNews</div>
+<div class="pl-item">HuggingFace</div>
+<div class="pl-item">HuggingFace Papers</div>
+<div class="pl-item">Official (auto-traced)</div>
+<div class="pl-item">OpenAI Blog</div>
+<div class="pl-item">Product Hunt</div>
+<div class="pl-item">SaaStr Blog</div>
+<div class="pl-item">Search Engine Journal</div>
+<div class="pl-item">TechCrunch</div>
+<div class="pl-item">The Verge</div>
+<div class="pl-item">r/LocalLLaMA</div>
+<div class="pl-item">r/MachineLearning</div>
+<div class="pl-item">r/SaaS</div>
+<div class="pl-item">r/SideProject</div>
+<div class="pl-item">r/ecommerce</div>
+<div class="pl-item">r/indiehackers</div>
+<div class="pl-item">r/micro_saas</div>
+<div class="pl-item">r/shopify</div>
+</div>
 
 <div class="sort-bar">
 <span class="sort-label">排序</span>
@@ -593,7 +699,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </div>
 </div>
-<div class="ft">ai-news-monitor · 15:59</div>
+<div class="ft">ai-news-monitor · 16:32</div>
 </div><script>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.sort-btn').forEach(function(btn) {
