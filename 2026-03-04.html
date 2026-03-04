@@ -48,9 +48,11 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 .sort-btn.active{border-color:#555;color:#eee;background:#151515}
 .badge{cursor:pointer;transition:all .15s}
 .badge:hover{border-color:#444;color:#ccc}
-.panel{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:10px;margin-bottom:14px;padding:10px 14px;max-height:300px;overflow-y:auto}
-.panel-head{font-size:12px;color:#999;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
-.panel-close{cursor:pointer;font-size:16px;color:#555;padding:0 4px}
+.overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:100;justify-content:center;align-items:center}
+.overlay.show{display:flex}
+.panel{background:#111;border:1px solid #222;border-radius:14px;padding:16px 20px;max-height:70vh;max-width:500px;width:90%;overflow-y:auto}
+.panel-head{font-size:13px;color:#ccc;font-weight:600;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.panel-close{cursor:pointer;font-size:20px;color:#666;padding:0 4px}
 .panel-close:hover{color:#fff}
 .pl-item{font-size:11px;color:#aaa;padding:3px 0;display:flex;align-items:center;gap:6px}
 .pl-count{font-size:10px;color:#555;min-width:20px;text-align:right}
@@ -60,12 +62,12 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="hdr"><h1>AI · SEO · 电商 日报</h1>
 <p>2026年03月04日 · 48h 动态</p>
 <div class="m">
-<span class="badge" onclick="togglePanel('topic-list')">🔥 32 主题</span>
-<span class="badge" onclick="togglePanel('source-list')">📊 53 信源</span>
-<span class="badge" onclick="togglePanel('channel-list')">📡 25 渠道</span>
+<span class="badge" onclick="togglePanel('topic')">🔥 32 主题</span>
+<span class="badge" onclick="togglePanel('source')">📊 53 信源</span>
+<span class="badge" onclick="togglePanel('channel')">📡 25 渠道</span>
 </div></div>
 
-<div id="topic-list" class="panel" style="display:none">
+<div id="topic-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="topic-list" class="panel" style="display:none">
 <div class="panel-head">🔥 主题列表 <span class="panel-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Qwen 3.5 全系列开源，MoE 4B 可手机运行，社区已跑通 vibe coding</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Nover Studio：AI 媒体制作的 Figma（Product Hunt 上线）</div>
@@ -101,7 +103,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Chrome WebMCP 预览版发布，AI Agent 可通过标准 API 操作网页</div>
 </div>
 
-<div id="source-list" class="panel" style="display:none">
+</div><div id="source-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="source-list" class="panel" style="display:none">
 <div class="panel-head">📊 信源列表 <span class="panel-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
 <div class="pl-item"><span class="pl-count">7</span> r/LocalLLaMA</div>
 <div class="pl-item"><span class="pl-count">5</span> TechCrunch</div>
@@ -130,7 +132,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="pl-count">1</span> r/shopify</div>
 </div>
 
-<div id="channel-list" class="panel" style="display:none">
+</div><div id="channel-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="channel-list" class="panel" style="display:none">
 <div class="panel-head">📡 渠道列表 <span class="panel-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
 <div class="pl-item">Ahrefs Blog</div>
 <div class="pl-item">AlternativeTo</div>
@@ -157,7 +159,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item">r/indiehackers</div>
 <div class="pl-item">r/micro_saas</div>
 <div class="pl-item">r/shopify</div>
-</div>
+</div></div>
 
 <div class="sort-bar">
 <span class="sort-label">排序</span>
@@ -699,7 +701,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </div>
 </div>
-<div class="ft">ai-news-monitor · 16:32</div>
+<div class="ft">ai-news-monitor · 16:34</div>
 </div><script>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.sort-btn').forEach(function(btn) {
