@@ -68,7 +68,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div></div>
 
 <div id="topic-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="topic-list" class="panel">
-<div class="panel-head">🔥 主题列表 <span class="panel-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
+<div class="panel-head">🔥 主题列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Qwen 3.5 全系列开源，MoE 4B 可手机运行，社区已跑通 vibe coding</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Nover Studio：AI 媒体制作的 Figma（Product Hunt 上线）</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Apple M5 Pro/Max 发布，LLM 推理速度提升 4 倍</div>
@@ -104,7 +104,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 
 </div><div id="source-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="source-list" class="panel">
-<div class="panel-head">📊 信源列表 <span class="panel-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
+<div class="panel-head">📊 信源列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
 <div class="pl-item"><span class="pl-count">7</span> r/LocalLLaMA</div>
 <div class="pl-item"><span class="pl-count">5</span> TechCrunch</div>
 <div class="pl-item"><span class="pl-count">5</span> Official (auto-traced)</div>
@@ -133,7 +133,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 
 </div><div id="channel-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="channel-list" class="panel">
-<div class="panel-head">📡 渠道列表 <span class="panel-close" onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
+<div class="panel-head">📡 渠道列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
 <div class="pl-item">Ahrefs Blog</div>
 <div class="pl-item">AlternativeTo</div>
 <div class="pl-item">ArXiv cs.AI</div>
