@@ -748,75 +748,52 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 </div>
 </div>
-<div class="ft">ai-news-monitor · 18:43</div>
+<div class="ft">ai-news-monitor · 18:45</div>
 </div><script>
-function togglePanel(id) {
-  document.querySelectorAll('.overlay').forEach(function(o) {
-    if (o.id === id + '-overlay') { o.classList.toggle('show'); }
-    else { o.classList.remove('show'); }
-  });
-}
-function closePanel(el) { el.closest('.overlay').classList.remove('show'); }
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.sort-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var mode = this.dataset.mode;
+function togglePanel(id){document.querySelectorAll('.overlay').forEach(function(o){if(o.id===id+'-overlay'){o.classList.toggle('show')}else{o.classList.remove('show')}})}
+function closePanel(el){el.closest('.overlay').classList.remove('show')}
+
+document.addEventListener('DOMContentLoaded',function(){
+  // Sort buttons
+  document.querySelectorAll('.sort-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var mode=this.dataset.mode;
       document.querySelectorAll('.sort-btn').forEach(function(b){b.classList.remove('active')});
       this.classList.add('active');
-      var container = document.querySelector('.cards');
-      var cards = Array.from(container.querySelectorAll('.card'));
-      if (mode === 'time') {
-        cards.sort(function(a,b){return (b.dataset.time||'').localeCompare(a.dataset.time||'')});
-      } else if (mode === 'score') {
-        cards.sort(function(a,b){return (parseInt(b.dataset.score)||0) - (parseInt(a.dataset.score)||0)});
-      } else if (mode === 'category') {
-        cards.sort(function(a,b){
-          var order = {'AI':'01','SaaS':'02','DevTools':'03','Infra':'04','SEO':'05','电商':'06'};
-          var ta = a.querySelector('.tag') ? a.querySelector('.tag').textContent : '';
-          var tb = b.querySelector('.tag') ? b.querySelector('.tag').textContent : '';
-          var oa = order[ta] || '99'+ta; var ob = order[tb] || '99'+tb;
-          if (oa !== ob) return oa.localeCompare(ob);
-          return (b.dataset.time||'').localeCompare(a.dataset.time||'');
-        });
-      }
+      var container=document.querySelector('.cards');
+      var cards=Array.from(container.querySelectorAll('.card'));
+      if(mode==='time'){cards.sort(function(a,b){return(b.dataset.time||'').localeCompare(a.dataset.time||'')})}
+      else if(mode==='score'){cards.sort(function(a,b){return(parseInt(b.dataset.score)||0)-(parseInt(a.dataset.score)||0)})}
+      else if(mode==='category'){cards.sort(function(a,b){var order={'AI':'01','SaaS':'02','DevTools':'03','Infra':'04','SEO':'05','电商':'06'};var ta=a.querySelector('.tag')?a.querySelector('.tag').textContent:'';var tb=b.querySelector('.tag')?b.querySelector('.tag').textContent:'';var oa=order[ta]||'99'+ta;var ob=order[tb]||'99'+tb;if(oa!==ob)return oa.localeCompare(ob);return(b.dataset.time||'').localeCompare(a.dataset.time||'')})}
       cards.forEach(function(c){container.appendChild(c)});
     });
   });
-  // === Filter ===
-  document.querySelectorAll('.filter-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      this.parentElement.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
-      this.classList.add('active');
-      applyFilters();
+
+  // Filter buttons - use event delegation on each filter-group
+  document.querySelectorAll('.filter-group').forEach(function(group){
+    group.addEventListener('click',function(e){
+      var btn=e.target.closest('.filter-btn');
+      if(!btn||!btn.dataset.fk)return;
+      group.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      doFilter();
     });
   });
 });
 
-function applyFilters() {
-  var topicVal='all', typeVal='all', timeVal='all';
-  document.querySelectorAll('.filter-btn.active').forEach(function(b) {
-    var k=b.dataset.fk, v=b.dataset.fv;
-    if(k==='topic') topicVal=v;
-    if(k==='type') typeVal=v;
-    if(k==='time') timeVal=v;
+function doFilter(){
+  var filters={};
+  document.querySelectorAll('.filter-group').forEach(function(g){
+    var active=g.querySelector('.filter-btn.active');
+    if(active&&active.dataset.fk){filters[active.dataset.fk]=active.dataset.fv}
   });
-  var now=new Date();
-  var todayStr=new Date(now.getTime()+8*3600000).toISOString().slice(0,10);
-  var yday=new Date(now.getTime()+8*3600000-86400000).toISOString().slice(0,10);
-  var d3=new Date(now.getTime()+8*3600000-3*86400000).toISOString().slice(0,10);
-  var count=0;
-  document.querySelectorAll('.card').forEach(function(card) {
+  var tv=filters['topic']||'all';
+  var yv=filters['type']||'all';
+  document.querySelectorAll('.card').forEach(function(c){
     var show=true;
-    if(topicVal!=='all'&&card.dataset.topic!==topicVal) show=false;
-    if(typeVal!=='all'&&card.dataset.type!==typeVal) show=false;
-    if(timeVal!=='all') {
-      var t=(card.dataset.time||'').slice(0,10);
-      if(timeVal==='today'&&t!==todayStr) show=false;
-      else if(timeVal==='yesterday'&&t!==yday) show=false;
-      else if(timeVal==='3d'&&t<d3) show=false;
-    }
-    card.style.display=show?'':'none';
-    if(show) count++;
+    if(tv!=='all'&&c.dataset.topic!==tv)show=false;
+    if(yv!=='all'&&c.dataset.type!==yv)show=false;
+    c.style.display=show?'':'none';
   });
 }
 </script></body></html>
