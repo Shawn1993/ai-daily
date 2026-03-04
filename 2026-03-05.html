@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>日报 03.05</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;background:#000;color:#e5e5e5;-webkit-font-smoothing:antialiased}
+.w{max-width:700px;margin:0 auto;padding:16px 14px}
+.hdr{text-align:center;padding:28px 0 18px;border-bottom:1px solid #151515;margin-bottom:18px}
+.hdr h1{font-size:20px;font-weight:700;color:#fff}
+.hdr p{color:#777;font-size:12px;margin-top:5px}
+.hdr .m{display:flex;justify-content:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.hdr .m span{font-size:11px;color:#555;background:#0a0a0a;padding:3px 10px;border-radius:14px;border:1px solid #181818}
+.toc{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:22px}
+.ti{font-size:11px;color:#777;text-decoration:none;padding:3px 9px;border-radius:12px;background:#080808;border:1px solid #151515;white-space:nowrap}
+.ti:hover{border-color:var(--c);color:#bbb}
+.ti .n{color:#333;margin-left:3px}
+section{margin-bottom:24px}
+h2{font-size:15px;font-weight:600;color:#999;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
+.card{background:#060606;border:1px solid #131313;border-radius:10px;margin-bottom:10px;overflow:hidden}
+.card:hover{border-color:#222}
+.card.hot{border-left:2px solid #dc2626}
+.card.warm{border-left:2px solid #d97706}
+.row{display:flex;gap:12px;padding:12px 14px}
+.img{width:96px;height:54px;min-width:96px;border-radius:6px;background-size:cover;background-position:center;background-color:#111}
+.imgf{display:flex;align-items:center;justify-content:center;background:color-mix(in srgb, var(--c) 20%, #000)}
+.imgf span{font-size:24px}
+.cnt{flex:1;min-width:0}
+.tags{display:flex;gap:4px;margin-bottom:4px;flex-wrap:wrap}
+.tag{font-size:10px;padding:2px 8px;border-radius:4px;color:#fff;background:var(--c);font-weight:600;white-space:nowrap;text-align:center;min-width:40px;display:inline-flex;align-items:center;justify-content:center}
+.tm{font-size:9px;color:#555;margin-left:auto;font-weight:300}
+.tt{font-size:14px;font-weight:600;color:#eee;line-height:1.4}
+.sm{font-size:12px;color:#999;margin-top:2px;line-height:1.5}
+.ins{font-size:14px;color:#c4956a;margin:0 14px;padding:8px 12px;background:#1a1206;border-radius:6px;border-left:2px solid #c4956a;line-height:1.6;font-weight:500}
+.sl{padding:6px 14px 10px;display:flex;flex-direction:column;gap:2px}
+.si{display:flex;align-items:center;gap:4px;text-decoration:none;color:#999;font-size:11px;padding:3px 4px;border-radius:4px}
+.si:hover{background:#111;color:#999}
+.bg{font-size:9px;padding:1px 5px;border-radius:3px;color:#fff;background:var(--c);font-weight:600;flex-shrink:0}
+.sn{font-size:10px;color:#888;flex-shrink:0;min-width:50px}
+.st{color:#555;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.si:hover .st{color:#aaa}
+.ft{text-align:center;padding:20px 0;margin-top:10px;border-top:1px solid #0f0f0f;font-size:10px;color:#555}
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.filter-group{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.filter-label{font-size:10px;color:#555;margin-right:2px}
+.filter-btn{font-size:10px;color:#666;background:#080808;border:1px solid #181818;padding:3px 8px;border-radius:10px;cursor:pointer;transition:all .15s}
+.filter-btn:hover{border-color:#333;color:#aaa}
+.filter-btn.active{border-color:#555;color:#eee;background:#151515}
+.sort-bar{display:flex;align-items:center;gap:6px;margin-bottom:16px}
+.sort-label{font-size:11px;color:#777}
+.sort-btn{font-size:11px;color:#666;background:#080808;border:1px solid #181818;padding:4px 10px;border-radius:12px;cursor:pointer;transition:all .15s}
+.sort-btn:hover{border-color:#333;color:#aaa}
+.sort-btn.active{border-color:#555;color:#eee;background:#151515}
+.badge{cursor:pointer;transition:all .15s}
+.badge:hover{border-color:#444;color:#ccc}
+.overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:100;justify-content:center;align-items:center}
+.overlay.show{display:flex}
+.panel{background:#111;border:1px solid #222;border-radius:14px;padding:16px 20px;max-height:70vh;max-width:500px;width:90%;overflow-y:auto}
+.panel-head{font-size:13px;color:#ccc;font-weight:600;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.panel-close{cursor:pointer;font-size:20px;color:#666;padding:0 4px}
+.panel-close:hover{color:#fff}
+.pl-item{font-size:11px;color:#aaa;padding:3px 0;display:flex;align-items:center;gap:6px}
+.pl-count{font-size:10px;color:#555;min-width:20px;text-align:right}
+@media(max-width:640px){.w{padding:10px 8px}.img{width:72px;height:40px;min-width:72px}.tt{font-size:13px}.tag{font-size:9px;min-width:36px}}
+</style></head><body>
+<div class="w">
+<div class="hdr"><h1>AI Daily</h1>
+<p>2026年03月05日 · 48h 动态</p>
+<div class="m">
+<span class="badge" onclick="togglePanel('topic')">🔥 36 主题</span>
+<span class="badge" onclick="togglePanel('source')">📊 59 信源</span>
+<span class="badge" onclick="togglePanel('channel')">📡 18 渠道</span>
+</div></div>
+
+<div id="topic-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="topic-list" class="panel">
+<div class="panel-head">🔥 主题列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
+<div class="pl-item"><span class="tag" style="--c:#d97706">电商</span> Shopify 追踪应用拖慢网站速度：商家困境</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> AI Agent 可观测性和记忆管理工具涌现</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> [实战] $25K ARR 创始人分享最大经验教训</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Show HN: 让网站访客直接用 ChatGPT/Claude/Gemini 提问产品</div>
+<div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> [实战] SEO 实操：10 天让 Google 收录 40+ 页面</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Show HN: Kelos — 在 Kubernetes 上安全运行 Claude 的 dangerously-skip-permissions</div>
+<div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> 将 Claude Code 变成 SEO 命令中心</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> [实战] 付费墙重新设计翻倍转化率，无需新功能</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Qwen3.5 系列密集发布：4B/9B/18B/27B/35B 全面铺开</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> [实战] Reddit 作为 #1 获客渠道，SaaS 增长到 5K MRR</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Show HN: Glyph — Rust 构建的 macOS 本地 Markdown 笔记应用</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> [实战] Product Hunt #1 登顶完整 Playbook</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Micro SaaS 收购模型指南</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> [实战] AI 生成 TikTok 幻灯片做 SaaS 营销</div>
+<div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> [实战] 用 AI 替代 SEO 代理机构，自建产品</div>
+<div class="pl-item"><span class="tag" style="--c:#d97706">电商</span> Amazon 卖家 AI 工具：一张照片生成商品图</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Show HN: Retro — 编码 Agent 的主动上下文管理工具</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> $3 十分钟微调就能显著提升模型效果</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> SaaS 宕机成本被严重低估</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 本地 LLM 推理实测：M3 Ultra 跑 11 款 MLX 模型对比</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> [实战] SaaS 从 0 到 $200K MRR 的 Playbook 更新</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> RLVR (GRPO) vs SFT 对比实验：小模型训练方法比较</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> [实战] €450K 营收、2300+ 客户的一年复盘</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 30 个 AI Agent 投产后的 5 大真实问题</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> [实战] 用 3 个 Claude Code Agent 替代开发团队，通过 Markdown 协调</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Google DeepMind 发布 Gemini 3.1 Flash-Lite，主打规模化低成本推理</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Cekura (YC F24)：AI 语音和聊天 Agent 的测试监控平台</div>
+<div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> Google AI Overview 引用 Top 排名页面的比例大幅下降</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 端侧 Qwen3-TTS 推理：iOS/macOS 上实现语音克隆</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Apple 或将使用 Google 服务器支撑升级版 AI Siri</div>
+<div class="pl-item"><span class="tag" style="--c:#0d9488">基础设施</span> Chrome WebMCP 预览版：标准化 AI Agent 网页操作 API</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Qwen3-Coder-Next 技术报告发布，代码能力大幅提升</div>
+<div class="pl-item"><span class="tag" style="--c:#555">opensource</span> alibaba/OpenSandbox 开源：安全沙箱环境（1,150 stars）</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> BeyondSWE 基准：测试代码 Agent 跨仓库修复能力</div>
+<div class="pl-item"><span class="tag" style="--c:#555">opensource</span> K-Dense-AI/claude-scientific-skills 开源（798 stars）</div>
+<div class="pl-item"><span class="tag" style="--c:#555">opensource</span> KeygraphHQ/shannon 开源（1,847 stars）</div>
+</div>
+
+</div><div id="source-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="source-list" class="panel">
+<div class="panel-head">📊 信源列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
+<div class="pl-item"><span class="pl-count">12</span> Official (auto-traced)</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">11</span> r/LocalLLaMA</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">7</span> r/micro_saas</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">7</span> HN Show</div>
+<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">3</span> GitHub Trending</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">3</span> r/SaaS</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">3</span> r/SideProject</div>
+<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">2</span> HuggingFace Papers</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">2</span> r/MachineLearning</div>
+<div class="pl-item"><span class="tier-badge" style="background:#e8b004">T1</span> <span class="pl-count">1</span> DeepMind Blog</div>
+<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">1</span> Product Hunt AI</div>
+<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">1</span> AlternativeTo</div>
+<div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">1</span> The Verge AI</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">1</span> HackerNews</div>
+<div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">1</span> SaaStr Blog</div>
+<div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">1</span> Search Engine Journal</div>
+<div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">1</span> Search Engine Land</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">1</span> r/ecommerce</div>
+</div>
+
+</div><div id="channel-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="channel-list" class="panel">
+<div class="panel-head">📡 渠道列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
+<div class="pl-tier">T1 官方</div>
+<div class="pl-item"><span class="tier-badge" style="background:#e8b004">T1</span> DeepMind Blog</div>
+<div class="pl-tier">T2 平台</div>
+<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> AlternativeTo</div>
+<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> GitHub Trending</div>
+<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> HuggingFace Papers</div>
+<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> Product Hunt AI</div>
+<div class="pl-tier">T3 媒体</div>
+<div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> SaaStr Blog</div>
+<div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> Search Engine Journal</div>
+<div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> Search Engine Land</div>
+<div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> The Verge AI</div>
+<div class="pl-tier">T4 社区</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> HN Show</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> HackerNews</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/LocalLLaMA</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/MachineLearning</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/SaaS</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/SideProject</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/ecommerce</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/micro_saas</div>
+<div class="pl-tier">其他</div>
+<div class="pl-item"><span class="tier-badge" style="background:#666">其他</span> Official (auto-traced)</div>
+</div></div>
+
+<div class="filter-bar">
+<div class="filter-group"><span class="filter-label">分类</span><button class="filter-btn active" data-fk="topic" data-fv="all">全部</button><button class="filter-btn" data-fk="topic" data-fv="ai">AI</button><button class="filter-btn" data-fk="topic" data-fv="devtools">开发工具</button><button class="filter-btn" data-fk="topic" data-fv="ecommerce">电商</button><button class="filter-btn" data-fk="topic" data-fv="infra">基础设施</button><button class="filter-btn" data-fk="topic" data-fv="opensource">opensource</button><button class="filter-btn" data-fk="topic" data-fv="saas">SaaS</button><button class="filter-btn" data-fk="topic" data-fv="seo">SEO</button></div>
+</div>
+<div class="filter-bar">
+<div class="filter-group"><span class="filter-label">类型</span><button class="filter-btn active" data-fk="type" data-fv="all">全部</button><button class="filter-btn" data-fk="type" data-fv="analysis">分析</button><button class="filter-btn" data-fk="type" data-fv="market">市场</button><button class="filter-btn" data-fk="type" data-fv="opensource">开源</button><button class="filter-btn" data-fk="type" data-fv="product">产品</button><button class="filter-btn" data-fk="type" data-fv="research">论文</button><button class="filter-btn" data-fk="type" data-fv="tutorial">实战</button></div>
+</div>
+<div class="filter-bar">
+<div class="filter-group"><span class="filter-label">时间</span><button class="filter-btn active" data-fk="time" data-fv="all">今天 03/05</button><a class="filter-btn" href="2026-03-04.html">昨天 03/04</a><a class="filter-btn" href="2026-03-03.html">前天 03/03</a></div>
+</div>
+<div class="sort-bar">
+<span class="sort-label">排序</span>
+<button class="sort-btn" data-mode="category">📂 分类</button>
+<button class="sort-btn active" data-mode="time">🕐 时间</button>
+<button class="sort-btn" data-mode="score">🔥 重要度</button>
+</div>
+<div class="cards"><div class="card warm" data-time="2026-03-04T16:13:10+00:00" data-score="6" data-topic="ecommerce" data-type="analysis">
+<div class="row">
+<div class="img" style="background-image:url(covers/fc34a3e286.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#d97706">电商</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-05 00:13</span>
+</div>
+<div class="tt">Shopify 追踪应用拖慢网站速度：商家困境</div>
+<div class="sm">电商社区热议追踪应用对网站性能的负面影响</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：轻量级追踪方案有市场机会，性能 vs 数据的权衡</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/ecommerce/comments/1rkpl4x/do_store_owners_just_accept_that_tracking_apps/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/ecommerce</span><span class="st">Do store owners just accept that tracking apps make their websites slow?</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T15:39:49+00:00" data-score="10" data-topic="devtools" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/da549eb46d.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#2563eb">开发工具</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-04 23:39</span>
+</div>
+<div class="tt">AI Agent 可观测性和记忆管理工具涌现</div>
+<div class="sm">Engram 发布托管 API，CodeYam 做 Claude Code 记忆管理，多款工具同期发布</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Agent 记忆和可观测性是基础设施层机会</div>
+<div class="sl">
+<a href="https://github.com/tstockham96/engram" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Engram update – 92% DMR, hosted API, lessons shipping agent memory</span></a>
+<a href="https://news.ycombinator.com/item?id=47248134" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: CodeYam Memory – comprehensive memory management for Claude Code</span></a>
+<a href="https://tracium.ai/" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: I made a 1 line AI Agent observability tool</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T15:37:37+00:00" data-score="15" data-topic="saas" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/a410c2ccec.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 23:37</span>
+</div>
+<div class="tt">[实战] $25K ARR 创始人分享最大经验教训</div>
+<div class="sm">独立开发者突破 $25K ARR 里程碑，分享核心建议</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：早期 SaaS 增长的实操经验，适合 0-1 阶段创业者</div>
+<div class="sl">
+<a href="https://www.tydal.co" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] [实战] $25K ARR 创始人分享最大经验教训</span></a>
+<a href="https://www.reddit.com/r/SaaS/comments/1rkomru/i_just_crossed_25k_arr_here_are_my_biggest_tips/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SaaS</span><span class="st">I just crossed $25k ARR. Here are my biggest tips for someone starting out.</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T15:33:26+00:00" data-score="15" data-topic="saas" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/f16db68bac.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-04 23:33</span>
+</div>
+<div class="tt">Show HN: 让网站访客直接用 ChatGPT/Claude/Gemini 提问产品</div>
+<div class="sm">嵌入式 AI 聊天组件，让访客用主流 AI 了解你的产品</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：AI 驱动的客户自助服务是转化率提升新方式</div>
+<div class="sl">
+<a href="https://news.ycombinator.com/item?id=47248988" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Let your website visitors ask ChatGPT/Claude/Gemini about your product</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T14:50:07+00:00" data-score="15" data-topic="seo" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/bb2c0680e9.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#ea580c">SEO</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 22:50</span>
+</div>
+<div class="tt">[实战] SEO 实操：10 天让 Google 收录 40+ 页面</div>
+<div class="sm">分享解决索引问题、10 天内让 40+ 页面被 Google 收录的方法</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：索引优化是 SEO 基础但常被忽视，系统方法可快速见效</div>
+<div class="sl">
+<a href="https://kitful.ai" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] [实战] SEO 实操：10 天让 Google 收录 40+ 页面</span></a>
+<a href="https://www.reddit.com/r/micro_saas/comments/1rknebi/how_i_fixed_my_indexing_silence_and_got_40_pages/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">How I fixed my indexing silence and got 40+ pages live in 14 days</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T14:26:57+00:00" data-score="9" data-topic="devtools" data-type="opensource">
+<div class="row">
+<div class="img" style="background-image:url(covers/234c33154f.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#2563eb">开发工具</span><span class="tag" style="--c:#06b6d4">开源</span><span class="tm">03-04 22:26</span>
+</div>
+<div class="tt">Show HN: Kelos — 在 Kubernetes 上安全运行 Claude 的 dangerously-skip-permissions</div>
+<div class="sm">通过 K8s 隔离环境安全使用 Claude Code 的高权限模式</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：AI Agent 权限隔离是企业部署核心需求</div>
+<div class="sl">
+<a href="https://github.com/kelos-dev/kelos" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Kelos – Run Claude —dangerously-skip-permissions on Kubernetes</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T14:00:00+00:00" data-score="8" data-topic="seo" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/979e092d83.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#ea580c">SEO</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 22:00</span>
+</div>
+<div class="tt">将 Claude Code 变成 SEO 命令中心</div>
+<div class="sm">实操指南：用 Claude Code 构建 SEO 自动化工作流</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：AI 编码工具正在渗透 SEO 领域，自动化空间巨大</div>
+<div class="sl">
+<a href="https://searchengineland.com/claude-code-seo-work-470668" target="_blank" class="si"><span class="bg" style="--c:#1a6aff">SEL</span><span class="sn">Search Engine Land</span><span class="st">How to turn Claude Code into your SEO command center</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T13:38:58+00:00" data-score="15" data-topic="saas" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/3239ede9ba.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 21:38</span>
+</div>
+<div class="tt">[实战] 付费墙重新设计翻倍转化率，无需新功能</div>
+<div class="sm">仅靠重新设计付费墙 UI，无功能更新即实现转化率翻倍</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：设计优化的 ROI 常被低估，支付页面是最值得投入的转化点</div>
+<div class="sl">
+<a href="https://posthog.com/" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] [实战] 付费墙重新设计翻倍转化率，无需新功能</span></a>
+<a href="https://www.reddit.com/r/SideProject/comments/1rklo54/doubled_my_conversion_with_a_paywall_redesign_no/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SideProject</span><span class="st">Doubled my Conversion with a PayWall Re-Design. No new features. Just design</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T13:24:28+00:00" data-score="15" data-topic="ai" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/0562f6920f.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-04 21:24</span>
+</div>
+<div class="tt">Qwen3.5 系列密集发布：4B/9B/18B/27B/35B 全面铺开</div>
+<div class="sm">Qwen3.5 多尺寸模型发布，社区积极测试量化和微调效果</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Qwen3.5 小模型在端侧和低资源场景极具竞争力，vibe coding 表现突出</div>
+<div class="sl">
+<a href="https://www.producthunt.com/products/qwen3" target="_blank" class="si"><span class="bg" style="--c:#da552f">PH</span><span class="sn">Product Hunt AI</span><span class="st">Qwen3.5 Small</span></a>
+<a href="https://github.com/bryce-hoehn/reap" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] Qwen3.5 系列密集发布：4B/9B/18B/27B/35B 全面铺开</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rk8knf/qwen3518breapa3bcoding_50_expertpruned/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-18B-REAP-A3B-Coding: 50% Expert-Pruned</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkb8en/qwen_35_4b_is_so_good_that_it_can_vibe_code_a/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen 3.5 4b is so good, that it can vibe code a fully working OS web app in one </span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkdlqi/qwen3535ba3b_hits_378_on_swebench_verified_hard/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-35B-A3B hits 37.8% on SWE-bench Verified Hard — nearly matching Claude O</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rk5qmr/qwen3527b_q4_quantization_comparison/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-27B Q4 Quantization Comparison</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rklc8i/qwen_qwen3527biq4_xs_in_16gb_vram/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen_Qwen3.5-27B-IQ4_XS in 16GB VRAM?</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rk74ap/qwen359b_uncensored_aggressive_release_gguf/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-9B Uncensored Aggressive Release (GGUF)</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rjwm8i/qwen359b_abliterated_0_refusals_vision/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-9B abliterated — 0% refusals + vision</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rjp08s/qwen354b_uncensored_aggressive_release_gguf/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-4B Uncensored Aggressive Release (GGUF)</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkhr0r/qwen35_9b_is_the_first_local_model_that_i_tried/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5 9B is the first local model that I tried, that can make adequate flappy </span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T11:23:34+00:00" data-score="13" data-topic="saas" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/d06b8e01eb.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 19:23</span>
+</div>
+<div class="tt">[实战] Reddit 作为 #1 获客渠道，SaaS 增长到 5K MRR</div>
+<div class="sm">团队分享用 Reddit 作为主要获客渠道的完整策略</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Reddit 仍是高质量 SaaS 获客渠道，需要内容策略而非广告</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/micro_saas/comments/1rkixyh/we_grew_our_saas_to_5k_mrr_using_reddit_as_our_1/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">We grew our SaaS to 5K MRR using Reddit as our #1 acquisition channel. Here's wh</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T10:36:23+00:00" data-score="12" data-topic="devtools" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/bbce8dfeb5.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#2563eb">开发工具</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-04 18:36</span>
+</div>
+<div class="tt">Show HN: Glyph — Rust 构建的 macOS 本地 Markdown 笔记应用</div>
+<div class="sm">用 Rust 开发的本地优先 Markdown 笔记工具，面向 macOS</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：本地优先 + Rust 性能是笔记类工具新卖点</div>
+<div class="sl">
+<a href="https://glyphformac.com/" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Glyph, a local-first Markdown notes app for macOS built with Rust</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T10:23:55+00:00" data-score="15" data-topic="saas" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/8312391a28.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 18:23</span>
+</div>
+<div class="tt">[实战] Product Hunt #1 登顶完整 Playbook</div>
+<div class="sm">详细复盘如何在 Product Hunt 获得排名第一的操作流程</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Product Hunt 发布仍是获取早期用户的有效策略</div>
+<div class="sl">
+<a href="http://Gojiberry.ai" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] [实战] Product Hunt #1 登顶完整 Playbook</span></a>
+<a href="https://www.reddit.com/r/micro_saas/comments/1rkhx35/how_we_ranked_1_on_product_hunt_exact_playbook/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">How we ranked #1 on Product Hunt (exact playbook)</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T10:22:30+00:00" data-score="13" data-topic="saas" data-type="analysis">
+<div class="row">
+<div class="img" style="background-image:url(covers/ceb9b1b867.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-04 18:22</span>
+</div>
+<div class="tt">Micro SaaS 收购模型指南</div>
+<div class="sm">详解 Micro SaaS 交易结构和收购模型选择</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Micro SaaS 买卖市场成熟化，了解交易结构是关键</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/micro_saas/comments/1rkhw85/micro_saas_deal_structures_a_guide_to_acquisition/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">Micro SaaS Deal Structures: A Guide to Acquisition Models</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T09:19:28+00:00" data-score="13" data-topic="saas" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/f4348ab178.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 17:19</span>
+</div>
+<div class="tt">[实战] AI 生成 TikTok 幻灯片做 SaaS 营销</div>
+<div class="sm">开发者构建 AI Agent 自动生成 TikTok 内容推广 SaaS 产品</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：AI+短视频自动化营销是低成本获客新路径</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/SideProject/comments/1rkgvyh/i_built_an_ai_agent_that_autogenerates_tiktok/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SideProject</span><span class="st">I built an AI agent that auto-generates TikTok slideshows to market my SaaS for </span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T09:18:28+00:00" data-score="15" data-topic="seo" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/60b0544945.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#ea580c">SEO</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 17:18</span>
+</div>
+<div class="tt">[实战] 用 AI 替代 SEO 代理机构，自建产品</div>
+<div class="sm">创始人上月雇了 SEO 机构，今天用 AI 替代并做成了产品</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：SEO 服务正在被 AI 工具化颠覆，代理机构面临压力</div>
+<div class="sl">
+<a href="http://www.howtoseo.ai" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] [实战] 用 AI 替代 SEO 代理机构，自建产品</span></a>
+<a href="https://www.reddit.com/r/SideProject/comments/1rkgven/last_month_i_hired_an_seo_agency_today_i_replaced/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SideProject</span><span class="st">Last month I hired an SEO agency. Today I replaced them with AI and built a prod</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T09:07:00+00:00" data-score="13" data-topic="ecommerce" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/535d092504.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#d97706">电商</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-04 17:07</span>
+</div>
+<div class="tt">Amazon 卖家 AI 工具：一张照片生成商品图</div>
+<div class="sm">针对 Amazon 卖家的 Micro SaaS，AI 从单张照片生成专业商品图</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：电商视觉内容生成是明确的 AI 变现场景</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/micro_saas/comments/1rkgops/built_a_micro_saas_for_amazon_sellers_ai_listing/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">Built a micro SaaS for Amazon sellers — AI listing images from one photo. Sharin</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T08:43:25+00:00" data-score="10" data-topic="devtools" data-type="opensource">
+<div class="row">
+<div class="img" style="background-image:url(covers/f5402f5936.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#2563eb">开发工具</span><span class="tag" style="--c:#06b6d4">开源</span><span class="tm">03-04 16:43</span>
+</div>
+<div class="tt">Show HN: Retro — 编码 Agent 的主动上下文管理工具</div>
+<div class="sm">为 AI 编码 Agent 提供活跃上下文整理，提升代码生成质量</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Agent 上下文管理是刚需痛点，工具链机会明确</div>
+<div class="sl">
+<a href="https://github.com/ImanHashemi/retro" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Retro – active context curator for coding agents</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T07:46:29+00:00" data-score="15" data-topic="ai" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/6db7afd951.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 15:46</span>
+</div>
+<div class="tt">$3 十分钟微调就能显著提升模型效果</div>
+<div class="sm">社区展示极低成本微调带来的惊人效果提升</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：微调成本已降到极低，垂直场景定制化门槛大幅降低</div>
+<div class="sl">
+<a href="http://hf.co/Jackrong/Qwen3.5-4B-Claude-4.6-Opus-Reasoning-Distilled-GGUF" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] $3 十分钟微调就能显著提升模型效果</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkfewe/its_very_interesting_what_a_3_10minute_finetune/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">It's very interesting what a $3 10-minute finetune can achieve</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T06:08:16+00:00" data-score="12" data-topic="saas" data-type="analysis">
+<div class="row">
+<div class="img" style="background-image:url(covers/5498d18474.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-04 14:08</span>
+</div>
+<div class="tt">SaaS 宕机成本被严重低估</div>
+<div class="sm">分析 Micro SaaS 创始人普遍低估宕机对业务的实际影响</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：可靠性监控是 SaaS 运营刚需，uptime 工具有持续市场</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/micro_saas/comments/1rkdqs4/most_microsaas_founders_massively_underestimate/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">Most micro-SaaS founders massively underestimate how much downtime actually cost</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T05:20:53+00:00" data-score="15" data-topic="ai" data-type="analysis">
+<div class="row">
+<div class="img" style="background-image:url(covers/76f7aff331.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-04 13:20</span>
+</div>
+<div class="tt">本地 LLM 推理实测：M3 Ultra 跑 11 款 MLX 模型对比</div>
+<div class="sm">社区用户在 M3 Ultra 上跑 11 款模型，对比速度和质量</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Apple Silicon 本地推理生态趋于成熟，Mac 成为开发者首选</div>
+<div class="sl">
+<a href="https://github.com/raullenchai/vllm-mlx" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] 本地 LLM 推理实测：M3 Ultra 跑 11 款 MLX 模型对比</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkcvqa/benchmarked_11_mlx_models_on_m3_ultra_heres_which/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Benchmarked 11 MLX models on M3 Ultra — here's which ones are actually smart and</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-04T02:19:34+00:00" data-score="15" data-topic="saas" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/593d653bf9.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 10:19</span>
+</div>
+<div class="tt">[实战] SaaS 从 0 到 $200K MRR 的 Playbook 更新</div>
+<div class="sm">创始人 6 个月前分享 playbook，今天更新了最新进展</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：经过验证的 SaaS 增长策略，值得逐条参考</div>
+<div class="sl">
+<a href="http://Smiile.co" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] [实战] SaaS 从 0 到 $200K MRR 的 Playbook 更新</span></a>
+<a href="https://www.reddit.com/r/SaaS/comments/1rk95b9/i_posted_my_playbook_for_launching_saas_to_200k/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SaaS</span><span class="st">I posted my playbook for launching SaaS to $200K MRR 6 months ago. Today we laun</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-03T21:44:35+00:00" data-score="15" data-topic="ai" data-type="research">
+<div class="row">
+<div class="img" style="background-image:url(covers/a6e2d0a154.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#8b5cf6">研究</span><span class="tm">03-04 05:44</span>
+</div>
+<div class="tt">RLVR (GRPO) vs SFT 对比实验：小模型训练方法比较</div>
+<div class="sm">用 Qwen2.5-1.5B 对比 RLVR 和 SFT 训练效果</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：RLVR 在小模型上展现优势，训练方法选择影响巨大</div>
+<div class="sl">
+<a href="https://huggingface.co/spaces/jayminban/RLVR-vs-SFT-Qwen2.5-1.5b" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] RLVR (GRPO) vs SFT 对比实验：小模型训练方法比较</span></a>
+<a href="https://www.reddit.com/r/MachineLearning/comments/1rk2kcz/p_i_trained_qwen2515b_with_rlvr_grpo_vs_sft_and/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/MachineLearning</span><span class="st">[P] I trained Qwen2.5-1.5b with RLVR (GRPO) vs SFT and compared benchmark perfor</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-03T17:37:44+00:00" data-score="7" data-topic="saas" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/fb67e77510.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 01:37</span>
+</div>
+<div class="tt">[实战] €450K 营收、2300+ 客户的一年复盘</div>
+<div class="sm">SaaS 创始人分享一年内做到 €450K 营收的经验教训</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：欧洲 SaaS 市场同样活跃，本地化和合规是差异化因素</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/SaaS/comments/1rjvrta/1_year_2300_customers_450000_here_are_a_few/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SaaS</span><span class="st">1 year, 2300+ customers, €450,000: here are a few lessons learned along the way.</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-03T17:08:52+00:00" data-score="9" data-topic="ai" data-type="analysis">
+<div class="row">
+<div class="img" style="background-image:url(covers/cafd37f00a.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-04 01:08</span>
+</div>
+<div class="tt">30 个 AI Agent 投产后的 5 大真实问题</div>
+<div class="sm">SaaStr 分享大规模 AI Agent 部署中被忽视的实际挑战</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Agent 落地远比 demo 复杂，运维监控是瓶颈</div>
+<div class="sl">
+<a href="https://www.saastr.com/we-have-30-ai-agents-in-production-here-are-the-top-5-issues-no-one-talks-about/" target="_blank" class="si"><span class="bg" style="--c:#6366f1">SaaStr</span><span class="sn">SaaStr Blog</span><span class="st">We Have 30 AI Agents in Production. Here Are the Top 5 Issues No One Talks About</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-03T16:42:40+00:00" data-score="15" data-topic="ai" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/734fce590f.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-04 00:42</span>
+</div>
+<div class="tt">[实战] 用 3 个 Claude Code Agent 替代开发团队，通过 Markdown 协调</div>
+<div class="sm">创始人分享用多个 AI Agent 协作替代人工开发团队的实操经验</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：多 Agent 协作模式正在实战验证，团队成本可压缩 10 倍</div>
+<div class="sl">
+<a href="https://github.com/yury-egorenkov/claude-code-docker" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] [实战] 用 3 个 Claude Code Agent 替代开发团队，通过 M</span></a>
+<a href="https://www.reddit.com/r/micro_saas/comments/1rju8sd/i_replaced_my_dev_team_with_3_claude_code_agents/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">I replaced my dev team with 3 Claude Code agents that coordinate through markdow</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-03T16:35:55+00:00" data-score="9" data-topic="ai" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/bd0c06ab34.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-04 00:35</span>
+</div>
+<div class="tt">Google DeepMind 发布 Gemini 3.1 Flash-Lite，主打规模化低成本推理</div>
+<div class="sm">Flash-Lite 定位大规模部署场景，强调性价比和吞吐量</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：低成本推理模型将加速 AI 在传统行业的渗透，关注批量调用场景</div>
+<div class="sl">
+<a href="https://deepmind.google/blog/gemini-3-1-flash-lite-built-for-intelligence-at-scale/" target="_blank" class="si"><span class="bg" style="--c:#10a37f">官方</span><span class="sn">DeepMind Blog</span><span class="st">Gemini 3.1 Flash-Lite: Built for intelligence at scale</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-03T14:30:58+00:00" data-score="7" data-topic="saas" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/bec89cbeea.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-03 22:30</span>
+</div>
+<div class="tt">Cekura (YC F24)：AI 语音和聊天 Agent 的测试监控平台</div>
+<div class="sm">YC 孵化项目，专做 AI Agent 对话质量测试与实时监控</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：AI Agent 质量保证是 B2B 刚需，YC 看好此方向</div>
+<div class="sl">
+<a href="https://news.ycombinator.com/item?id=47232903" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HackerNews</span><span class="st">Launch HN: Cekura (YC F24) – Testing and monitoring for voice and chat AI agents</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-02T21:36:41+00:00" data-score="6" data-topic="seo" data-type="analysis">
+<div class="row">
+<div class="img" style="background-image:url(covers/fb024df9ac.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#ea580c">SEO</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-03 05:36</span>
+</div>
+<div class="tt">Google AI Overview 引用 Top 排名页面的比例大幅下降</div>
+<div class="sm">数据显示 Google AI Overview 不再主要引用 Top 排名页面</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：SEO 排名≠AI 可见性，需要新策略适应 AI 搜索时代</div>
+<div class="sl">
+<a href="https://www.searchenginejournal.com/google-ai-overview-citations-from-top-ranking-pages-drop-sharply/568637/" target="_blank" class="si"><span class="bg" style="--c:#1a6aff">SEJ</span><span class="sn">Search Engine Journal</span><span class="st">Google AI Overview Citations From Top-Ranking Pages Drop Sharply via @sejournal,</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-02T15:48:34+00:00" data-score="15" data-topic="ai" data-type="opensource">
+<div class="row">
+<div class="img" style="background-image:url(covers/014423be45.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#06b6d4">开源</span><span class="tm">03-02 23:48</span>
+</div>
+<div class="tt">端侧 Qwen3-TTS 推理：iOS/macOS 上实现语音克隆</div>
+<div class="sm">通过 MLX-Swift 在 Apple 设备上运行 Qwen3-TTS，支持语音克隆</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：端侧 TTS 带来隐私友好的语音应用新可能</div>
+<div class="sl">
+<a href="https://www.youtube.com/watch?v=05gne9oPaaY" target="_blank" class="si"><span class="bg" style="--c:#555">Offici</span><span class="sn">Official (auto-traced)</span><span class="st">[官方] 端侧 Qwen3-TTS 推理：iOS/macOS 上实现语音克隆</span></a>
+<a href="https://www.reddit.com/r/MachineLearning/comments/1riwd3l/p_ondevice_qwen3tts_17b06b_inference_on_ios_and/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/MachineLearning</span><span class="st">[P] On-device Qwen3-TTS (1.7B/0.6B) inference on iOS and macOS via MLX-Swift — v</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-02T15:22:33-05:00" data-score="7" data-topic="ai" data-type="market">
+<div class="row">
+<div class="img" style="background-image:url(covers/2358ec4015.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#f59e0b">市场</span><span class="tm">03-03 04:22</span>
+</div>
+<div class="tt">Apple 或将使用 Google 服务器支撑升级版 AI Siri</div>
+<div class="sm">Apple 考虑用 Google 云端算力为新 Siri 提供 AI 推理支持</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Apple 自研芯片不够用，云端 AI 推理需求巨大，利好 Google Cloud</div>
+<div class="sl">
+<a href="https://www.theverge.com/tech/887802/apple-ai-siri-google-servers" target="_blank" class="si"><span class="bg" style="--c:#0a9e01">Verge</span><span class="sn">The Verge AI</span><span class="st">Apple might use Google servers to store data for its upgraded AI Siri</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-02T09:46:37+00:00" data-score="7" data-topic="infra" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/0ca7f81190.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#0d9488">基础设施</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-02 17:46</span>
+</div>
+<div class="tt">Chrome WebMCP 预览版：标准化 AI Agent 网页操作 API</div>
+<div class="sm">Chrome 推出 WebMCP 早期预览，为 AI Agent 提供标准化网页交互协议</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：浏览器原生支持 AI Agent，web automation 工具格局将重塑</div>
+<div class="sl">
+<a href="https://alternativeto.net/news/2026/3/chrome-webmcp-early-preview-brings-apis-to-standardize-ai-agent-website-actions/" target="_blank" class="si"><span class="bg" style="--c:#e8503a">Alt</span><span class="sn">AlternativeTo</span><span class="st">Chrome WebMCP early preview brings APIs to standardize AI agent website actions</span></a>
+</div>
+</div>
+<div class="card hot" data-time="" data-score="8" data-topic="ai" data-type="research">
+<div class="row">
+<div class="img" style="background-image:url(covers/44448e9fca.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#8b5cf6">研究</span>
+</div>
+<div class="tt">Qwen3-Coder-Next 技术报告发布，代码能力大幅提升</div>
+<div class="sm">Qwen 发布 Coder-Next 技术报告，编程基准测试表现亮眼</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：开源代码模型持续逼近闭源水平，降低 AI 编程工具的成本门槛</div>
+<div class="sl">
+<a href="https://arxiv.org/abs/2603.00729" target="_blank" class="si"><span class="bg" style="--c:#ffd21e">HF</span><span class="sn">HuggingFace Papers</span><span class="st">Qwen3-Coder-Next Technical Report</span></a>
+</div>
+</div>
+<div class="card hot" data-time="" data-score="10" data-topic="opensource" data-type="opensource">
+<div class="row">
+<div class="img" style="background-image:url(covers/f2c87c4638.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#555">opensource</span><span class="tag" style="--c:#06b6d4">开源</span>
+</div>
+<div class="tt">alibaba/OpenSandbox 开源：安全沙箱环境（1,150 stars）</div>
+<div class="sm">阿里开源 AI Agent 沙箱执行环境，GitHub 日增千星</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：Agent 安全执行环境是基础设施级需求，关注 sandboxing 赛道</div>
+<div class="sl">
+<a href="https://github.com/alibaba/OpenSandbox" target="_blank" class="si"><span class="bg" style="--c:#7c3aed">GitHub</span><span class="sn">GitHub Trending</span><span class="st">alibaba/OpenSandbox (1,150 stars today)</span></a>
+</div>
+</div>
+<div class="card hot" data-time="" data-score="12" data-topic="ai" data-type="research">
+<div class="row">
+<div class="img" style="background-image:url(covers/306bd12ff5.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#8b5cf6">研究</span>
+</div>
+<div class="tt">BeyondSWE 基准：测试代码 Agent 跨仓库修复能力</div>
+<div class="sm">新基准评测 AI Agent 在单仓库修 bug 之外的真实能力</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：SWE-bench 已不够用，复杂工程任务成为下一个评测方向</div>
+<div class="sl">
+<a href="https://arxiv.org/abs/2603.03194" target="_blank" class="si"><span class="bg" style="--c:#ffd21e">HF</span><span class="sn">HuggingFace Papers</span><span class="st">BeyondSWE: Can Current Code Agent Survive Beyond Single-Repo Bug Fixing?</span></a>
+</div>
+</div>
+<div class="card warm" data-time="" data-score="7" data-topic="opensource" data-type="opensource">
+<div class="row">
+<div class="img" style="background-image:url(covers/523aff7485.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#555">opensource</span><span class="tag" style="--c:#06b6d4">开源</span>
+</div>
+<div class="tt">K-Dense-AI/claude-scientific-skills 开源（798 stars）</div>
+<div class="sm">为 Claude 提供科学计算增强能力的开源技能集</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：AI Agent 技能市场正在形成，垂直技能包是变现方向</div>
+<div class="sl">
+<a href="https://github.com/K-Dense-AI/claude-scientific-skills" target="_blank" class="si"><span class="bg" style="--c:#7c3aed">GitHub</span><span class="sn">GitHub Trending</span><span class="st">K-Dense-AI/claude-scientific-skills (798 stars today)</span></a>
+</div>
+</div>
+<div class="card warm" data-time="" data-score="6" data-topic="opensource" data-type="opensource">
+<div class="row">
+<div class="img" style="background-image:url(covers/371f25de4e.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#555">opensource</span><span class="tag" style="--c:#06b6d4">开源</span>
+</div>
+<div class="tt">KeygraphHQ/shannon 开源（1,847 stars）</div>
+<div class="sm">GitHub 日增近两千星的新项目</div>
+</div>
+</div>
+<div class="ins">💡 商业启示：关注快速增长的开源项目，可能代表新趋势</div>
+<div class="sl">
+<a href="https://github.com/KeygraphHQ/shannon" target="_blank" class="si"><span class="bg" style="--c:#7c3aed">GitHub</span><span class="sn">GitHub Trending</span><span class="st">KeygraphHQ/shannon (1,847 stars today)</span></a>
+</div>
+</div>
+</div>
+<div class="ft">ai-news-monitor · 00:45</div>
+</div><script>
+function togglePanel(id){document.querySelectorAll('.overlay').forEach(function(o){if(o.id===id+'-overlay'){o.classList.toggle('show')}else{o.classList.remove('show')}})}
+function closePanel(el){el.closest('.overlay').classList.remove('show')}
+
+document.addEventListener('DOMContentLoaded',function(){
+  // Sort buttons
+  document.querySelectorAll('.sort-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var mode=this.dataset.mode;
+      document.querySelectorAll('.sort-btn').forEach(function(b){b.classList.remove('active')});
+      this.classList.add('active');
+      var container=document.querySelector('.cards');
+      var cards=Array.from(container.querySelectorAll('.card'));
+      if(mode==='time'){cards.sort(function(a,b){return(b.dataset.time||'').localeCompare(a.dataset.time||'')})}
+      else if(mode==='score'){cards.sort(function(a,b){return(parseInt(b.dataset.score)||0)-(parseInt(a.dataset.score)||0)})}
+      else if(mode==='category'){cards.sort(function(a,b){var order={'AI':'01','SaaS':'02','DevTools':'03','Infra':'04','SEO':'05','电商':'06'};var ta=a.querySelector('.tag')?a.querySelector('.tag').textContent:'';var tb=b.querySelector('.tag')?b.querySelector('.tag').textContent:'';var oa=order[ta]||'99'+ta;var ob=order[tb]||'99'+tb;if(oa!==ob)return oa.localeCompare(ob);return(b.dataset.time||'').localeCompare(a.dataset.time||'')})}
+      cards.forEach(function(c){container.appendChild(c)});
+    });
+  });
+
+  // Filter buttons - use event delegation on each filter-group
+  document.querySelectorAll('.filter-group').forEach(function(group){
+    group.addEventListener('click',function(e){
+      var btn=e.target.closest('.filter-btn');
+      if(!btn||!btn.dataset.fk)return;
+      group.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      doFilter();
+    });
+  });
+});
+
+function doFilter(){
+  var filters={};
+  document.querySelectorAll('.filter-group').forEach(function(g){
+    var active=g.querySelector('.filter-btn.active');
+    if(active&&active.dataset.fk){filters[active.dataset.fk]=active.dataset.fv}
+  });
+  var tv=filters['topic']||'all';
+  var yv=filters['type']||'all';
+  document.querySelectorAll('.card').forEach(function(c){
+    var show=true;
+    if(tv!=='all'&&c.dataset.topic!==tv)show=false;
+    if(yv!=='all'&&c.dataset.type!==yv)show=false;
+    c.style.display=show?'':'none';
+  });
+}
+</script></body></html>
