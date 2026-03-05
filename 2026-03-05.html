@@ -68,13 +68,16 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="hdr"><h1>AI Daily</h1>
 <p>2026年03月05日 · 48h 动态</p>
 <div class="m">
-<span class="badge" onclick="togglePanel('topic')">🔥 107 主题</span>
-<span class="badge" onclick="togglePanel('source')">📊 153 信源</span>
-<span class="badge" onclick="togglePanel('channel')">📡 28 渠道</span>
+<span class="badge" onclick="togglePanel('topic')">🔥 111 主题</span>
+<span class="badge" onclick="togglePanel('source')">📊 158 信源</span>
+<span class="badge" onclick="togglePanel('channel')">📡 30 渠道</span>
 </div></div>
 
 <div id="topic-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="topic-list" class="panel">
 <div class="panel-head">🔥 主题列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 8 个月打造多人音乐猜歌游戏上线实录</div>
+<div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> SEO 基础学习资源推荐汇总</div>
+<div class="pl-item"><span class="tag" style="--c:#d97706">电商</span> Shopify 履约流程拆解与优化</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 极简笔记应用：对抗功能臃肿的减法设计</div>
 <div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> Google 验证来源包：AI Agent 优先信任的权威信号</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Cursor 年化收入突破 $20 亿</div>
@@ -115,6 +118,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> CodeDrift：AI 生成代码的静态分析工具</div>
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> AI Agent 团队指挥中心开源工具</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Qwen 3.5 全系列发布：从 0.8B 到 397B，MoE 架构全面铺开</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Micro SaaS 运营成本实录：1K MRR 阶段开销明细</div>
 <div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> AI 无法读取你的 CMS 就无法推荐你的品牌</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> SaaS 失败后简化衍生品反而成功的故事</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 一行代码提升 Demo 表单转化率</div>
@@ -187,9 +191,9 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div><div id="source-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="source-list" class="panel">
 <div class="panel-head">📊 信源列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">29</span> HN Show</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">22</span> r/LocalLLaMA</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">13</span> r/SaaS</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">13</span> r/SideProject</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">23</span> r/LocalLLaMA</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">14</span> r/SaaS</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">14</span> r/SideProject</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">12</span> r/micro_saas</div>
 <div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">10</span> HuggingFace Papers</div>
 <div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">7</span> Search Engine Journal</div>
@@ -214,6 +218,8 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">1</span> SaaStr Blog</div>
 <div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">1</span> The Verge AI</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">1</span> r/ecommerce</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">1</span> r/SEO</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">1</span> r/shopify</div>
 </div>
 
 </div><div id="channel-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="channel-list" class="panel">
@@ -240,11 +246,13 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> HackerNews</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/LocalLLaMA</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/MachineLearning</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/SEO</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/SaaS</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/SideProject</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/ecommerce</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/indiehackers</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/micro_saas</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> r/shopify</div>
 <div class="pl-tier">其他</div>
 <div class="pl-item"><span class="tier-badge" style="background:#666">其他</span> Anthropic Official</div>
 <div class="pl-item"><span class="tier-badge" style="background:#666">其他</span> Bluesky @natolambert.bsky.social</div>
@@ -268,7 +276,55 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <button class="sort-btn active" data-mode="time">🕐 时间</button>
 <button class="sort-btn" data-mode="score">🔥 重要度</button>
 </div>
-<div class="cards"><div class="card warm" data-time="2026-03-05T14:34:24+00:00" data-score="7" data-topic="saas" data-type="product">
+<div class="cards"><div class="card warm" data-time="2026-03-05T14:50:52+00:00" data-score="4" data-topic="saas" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/79480b06d967.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-05 22:50</span>
+</div>
+<div class="tt">8 个月打造多人音乐猜歌游戏上线实录</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡娱乐社交品类需长期打磨验证 PMF</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/SideProject/comments/1rljkqd/i_spent_8_months_building_a_multiplayer_music/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SideProject</span><span class="st">I spent 8 months building a multiplayer music quiz app. It just got approved on </span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-05T14:49:45+00:00" data-score="6" data-topic="seo" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/47104343cf2e.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#ea580c">SEO</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-05 22:49</span>
+</div>
+<div class="tt">SEO 基础学习资源推荐汇总</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡AI 时代 SEO 入门仍需系统学习基础功力</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/SEO/comments/1rljjr1/what_resources_do_you_recommend_to_learn_seo/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SEO</span><span class="st">What resources do you recommend to learn SEO fundamentals</span></a>
+</div>
+</div>
+<div class="card " data-time="2026-03-05T14:46:30+00:00" data-score="3" data-topic="ecommerce" data-type="analysis">
+<div class="row">
+<div class="img" style="background-image:url(covers/388cc1fc117a.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#d97706">电商</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-05 22:46</span>
+</div>
+<div class="tt">Shopify 履约流程拆解与优化</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡履约效率是电商利润的隐形杠杆</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/shopify/comments/1rljgx6/fulfillment_breakdown/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/shopify</span><span class="st">Fulfillment Breakdown</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-05T14:34:24+00:00" data-score="7" data-topic="saas" data-type="product">
 <div class="row">
 <div class="img" style="background-image:url(covers/e6306ee4a7aa.webp)"></div>
 <div class="cnt">
@@ -319,7 +375,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 <div class="card warm" data-time="2026-03-05T14:29:51+00:00" data-score="4" data-topic="ecommerce" data-type="market">
 <div class="row">
-<div class="img imgf" style="--c:#d97706"><span>🛒</span></div>
+<div class="img" style="background-image:url(covers/f73396b53b27.webp)"></div>
 <div class="cnt">
 <div class="tags">
 <span class="tag" style="--c:#d97706">电商</span><span class="tag" style="--c:#f59e0b">市场</span><span class="tm">03-05 22:29</span>
@@ -384,6 +440,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkl0tl/llamabench_qwen35_models_strix_halo/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">llama-bench Qwen3.5 models strix halo</span></a>
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rlgovg/qwen35122ba10bgptqint4_on_4xr9700_recipe/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-122B-A10B-GPTQ-INT4 on 4xR9700 Recipe</span></a>
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkzs5v/massive_speed_gap_with_qwen3535ba3b_16_toks_on_lm/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Massive speed gap with Qwen3.5-35B-A3B: 16 tok/s on LM Studio vs 40 tok/s on bar</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rlerty/qwen_35_08b_2b_4b_9b_all_outputting_gibberish/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen 3.5 0.8b, 2B, 4B, 9B - All outputting gibberish after 2 - 3 turns.</span></a>
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkcvqa/benchmarked_11_mlx_models_on_m3_ultra_heres_which/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Benchmarked 11 MLX models on M3 Ultra — here's which ones are actually smart and</span></a>
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rktgha/qwen3_9b_can_run_fine_on_android_phones_at_q4_0/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3 9B can run fine on android phones at q4_0</span></a>
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rle33z/some_tests_of_qwen35_on_v100s/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Some tests of Qwen3.5 on V100s</span></a>
@@ -930,6 +987,22 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <a href="https://bsky.app/profile/natolambert.bsky.social/post/3mgbtocjtl22i" target="_blank" class="si"><span class="bg" style="--c:#0085ff">Bluesky</span><span class="sn">Bluesky @natolambert.bsky.social</span><span class="st">@natolambert.bsky.social: I’m doing my part to save Qwen. 
 Yes they dm me regula</span></a>
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rlckan/qwen3_vs_qwen35_performance/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3 vs Qwen3.5 performance</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-05T11:39:40+00:00" data-score="11" data-topic="saas" data-type="analysis">
+<div class="row">
+<div class="img" style="background-image:url(covers/f7f19f2cffcf.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-05 19:39</span>
+</div>
+<div class="tt">Micro SaaS 运营成本实录：1K MRR 阶段开销明细</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡微型 SaaS 盈利门槛低但隐性成本不容忽视</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/SaaS/comments/1rlfev3/cost_of_selling_micro_saas_1k_mrr/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SaaS</span><span class="st">Cost of selling micro saas . 1k MRR</span></a>
 </div>
 </div>
 <div class="card " data-time="2026-03-05T11:30:05+00:00" data-score="3" data-topic="seo" data-type="tutorial">
@@ -2028,7 +2101,7 @@ Yes they dm me regula</span></a>
 </div>
 </div>
 </div>
-<div class="ft">ai-news-monitor · 22:38</div>
+<div class="ft">ai-news-monitor · 22:53</div>
 </div><script>
 function togglePanel(id){document.querySelectorAll('.overlay').forEach(function(o){if(o.id===id+'-overlay'){o.classList.toggle('show')}else{o.classList.remove('show')}})}
 function closePanel(el){el.closest('.overlay').classList.remove('show')}
