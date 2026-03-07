@@ -68,15 +68,23 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="hdr"><h1>AI Daily</h1>
 <p>2026年03月07日 · 48h 动态</p>
 <div class="m">
-<span class="badge" onclick="togglePanel('topic')">🔥 414 主题</span>
-<span class="badge" onclick="togglePanel('source')">📊 565 信源</span>
+<span class="badge" onclick="togglePanel('topic')">🔥 422 主题</span>
+<span class="badge" onclick="togglePanel('source')">📊 575 信源</span>
 <span class="badge" onclick="togglePanel('channel')">📡 46 渠道</span>
 </div></div>
 
 <div id="topic-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="topic-list" class="panel">
 <div class="panel-head">🔥 主题列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 有组织拖延症的Todo工具：反生产力设计</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Git-lanes：AI编程Agent并行隔离Git工具</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Llama 3.2 3B与Keiro Research在SimBench达到85%</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Qwen3-Coder-Next登顶SWE-rebench Pass 5</div>
+<div class="pl-item"><span class="tag" style="--c:#d97706">电商</span> 修复23%购物车弃购率的三步漏斗策略</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Pouch：session优先的GNU Screen管理器</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 开发者从失败中学到的产品洞察</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> OpenClaw定制化控制需求：日常使用场景深化</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Claude技能验证创业想法：10路并行调研</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> VC认为SaaS正在失去护城河：AI时代SaaS壁垒讨论</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 拒绝$250万VC融资的SaaS创业决策</div>
 <div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> Google关键词排名波动加剧：SEO稳定性讨论</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> n8n+Claude替代虚拟助理的自动化实战</div>
@@ -102,7 +110,6 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Resend-CLI：面向AI Agent的邮件发送CLI</div>
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Rai：Shell和CICD中嵌入AI步骤</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> EdgeDox：Android端离线文档AI工具基于Qwen</div>
-<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 开发者从失败中学到的产品洞察</div>
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> CC Pocket：手机远程控制Claude Code</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Bird's Nest：开源本地推理管理器</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> AI Agent十分钟写完整本小说实验</div>
@@ -237,7 +244,9 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Git-surgeon：面向AI Agent的细粒度Git操作原语</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> AI自动化B2B外联工具：10亿数据点驱动</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> DataQueryAI：自然语言本地转SQL工具</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> LTX-2.3 发布：新一代创意视频生成模型</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Apple 发布 M5 Pro/Max 芯片和 MacBook Neo 低价本</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 21st Agents SDK：AI Agent开发SDK</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 用开源方案绕过冗长隐私政策的实战</div>
 <div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> AI Max 广告提升 13% 收入但推高 CPA</div>
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> cpx：带进度条断点续传的并行拷贝工具</div>
@@ -378,7 +387,6 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> LTX-2.3 发布：新一代创意视频生成模型</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> CubeComposer：时空自回归 4K 3D 生成</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Proact-VL：实时主动视频 AI 伴侣</div>
-<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> LTX-2.3 发布：新一代创意视频生成模型</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> OpenAI 发布 GPT-5.4：极限推理与自主 Agent 能力</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Emollick：AI 约束已从模型能力转向治理与部署</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> PyTorch ExecuTorch：微边缘设备推理方案</div>
@@ -493,10 +501,10 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 
 </div><div id="source-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="source-list" class="panel">
 <div class="panel-head">📊 信源列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">180</span> HN Show</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">67</span> r/LocalLLaMA</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">52</span> r/SaaS</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">37</span> r/SideProject</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">183</span> HN Show</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">68</span> r/LocalLLaMA</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">53</span> r/SaaS</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">39</span> r/SideProject</div>
 <div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">25</span> HuggingFace Papers</div>
 <div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">24</span> ArXiv cs.AI</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">22</span> r/micro_saas</div>
@@ -505,12 +513,13 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">16</span> HackerNews</div>
 <div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">12</span> AlternativeTo</div>
 <div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">9</span> Search Engine Journal</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">9</span> r/shopify</div>
 <div class="pl-item"><span class="tier-badge" style="background:#e8b004">T1</span> <span class="pl-count">8</span> OpenAI Blog</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">8</span> r/shopify</div>
 <div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">7</span> GitHub Trending</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">7</span> r/SEO</div>
 <div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">5</span> Search Engine Land</div>
 <div class="pl-item"><span class="pl-count">4</span> Twitter @bindureddy</div>
+<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">4</span> Product Hunt AI</div>
 <div class="pl-item"><span class="pl-count">3</span> Twitter @OpenAI</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">3</span> r/MachineLearning</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">3</span> r/indiehackers</div>
@@ -518,7 +527,6 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="pl-count">3</span> Twitter @karpathy</div>
 <div class="pl-item"><span class="pl-count">3</span> Twitter @emollick</div>
 <div class="pl-item"><span class="tier-badge" style="background:#e8b004">T1</span> <span class="pl-count">2</span> Google AI Blog</div>
-<div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">2</span> Product Hunt AI</div>
 <div class="pl-item"><span class="pl-count">2</span> Bluesky @natolambert.bsky.social</div>
 <div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">2</span> Product Hunt Top</div>
 <div class="pl-item"><span class="pl-count">2</span> r/bigseo</div>
@@ -611,7 +619,120 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <button class="sort-btn active" data-mode="time">🕐 时间</button>
 <button class="sort-btn" data-mode="score">🔥 重要度</button>
 </div>
-<div class="cards"><div class="card warm" data-time="2026-03-07T07:37:25+00:00" data-score="5" data-topic="ai" data-type="product">
+<div class="cards"><div class="card warm" data-time="2026-03-07T08:34:59+00:00" data-score="4" data-topic="saas" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/41096e67d7d4.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-07 16:34</span>
+</div>
+<div class="tt">有组织拖延症的Todo工具：反生产力设计</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡反直觉产品定位也能找到市场</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/SideProject/comments/1rn4uty/todo_list_for_organized_procrastination/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SideProject</span><span class="st">Todo list for organized procrastination.</span></a>
+</div>
+</div>
+<div class="card " data-time="2026-03-07T08:15:27+00:00" data-score="3" data-topic="devtools" data-type="opensource">
+<div class="row">
+<div class="img" style="background-image:url(covers/6df4485ed4bd.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#2563eb">开发工具</span><span class="tag" style="--c:#06b6d4">开源</span><span class="tm">03-07 16:15</span>
+</div>
+<div class="tt">Git-lanes：AI编程Agent并行隔离Git工具</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡多Agent并行编码需要Git层面的隔离方案</div>
+<div class="sl">
+<a href="https://github.com/bugrax/git-lanes" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Git-lanes – Parallel isolation for AI coding agents using Git worktrees</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-07T08:06:21+00:00" data-score="6" data-topic="ai" data-type="research">
+<div class="row">
+<div class="img" style="background-image:url(covers/6cf8eabc4f80.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#8b5cf6">研究</span><span class="tm">03-07 16:06</span>
+</div>
+<div class="tt">Llama 3.2 3B与Keiro Research在SimBench达到85%</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡小模型在特定基准上持续逼近大模型表现</div>
+<div class="sl">
+<a href="https://www.keirolabs.cloud/benchmarks" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Llama 3.2 3B and Keiro Research achieves 85% on SimpleQA</span></a>
+</div>
+</div>
+<div class="card " data-time="2026-03-07T07:56:00+00:00" data-score="3" data-topic="ai" data-type="research">
+<div class="row">
+<div class="img" style="background-image:url(covers/aeca4cd2e735.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#8b5cf6">研究</span><span class="tm">03-07 15:56</span>
+</div>
+<div class="tt">Qwen3-Coder-Next登顶SWE-rebench Pass 5</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡Qwen编程模型在代码基准测试中表现突出</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rn476o/qwen3codernext_is_the_top_model_in_swerebench/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3-Coder-Next is the top model in SWE-rebench @ Pass 5. I think everyone miss</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-07T07:50:44+00:00" data-score="7" data-topic="ecommerce" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/6d4cfef83da8.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#d97706">电商</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-07 15:50</span>
+</div>
+<div class="tt">修复23%购物车弃购率的三步漏斗策略</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡弃购率优化仍是电商转化核心杠杆</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/shopify/comments/1rn4416/i_fixed_my_23_cart_abandonment_rate_heres_the/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/shopify</span><span class="st">I Fixed My 23% Cart Abandonment Rate. Here's the 3-Step Funnel Audit I Used</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-07T07:47:08+00:00" data-score="4" data-topic="devtools" data-type="opensource">
+<div class="row">
+<div class="img" style="background-image:url(covers/21045146851e.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#2563eb">开发工具</span><span class="tag" style="--c:#06b6d4">开源</span><span class="tm">03-07 15:47</span>
+</div>
+<div class="tt">Pouch：session优先的GNU Screen管理器</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡终端会话管理工具持续细分</div>
+<div class="sl">
+<a href="https://github.com/zpdldhkdl/pouch" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Pouch – a session-first GNU Screen manager with a focused terminal UI</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-07T07:38:56+00:00" data-score="4" data-topic="saas" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/ff75d5aee774.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-07 15:38</span>
+</div>
+<div class="tt">开发者从失败中学到的产品洞察</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡跨领域经验迁移到产品设计思维</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/SideProject/comments/1rn0xsx/im_a_developer_who_accidentally_learned_something/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SideProject</span><span class="st">Im a developer who accidentally learned something about relationships while buil</span></a>
+<a href="https://www.reddit.com/r/SideProject/comments/1rn3wvt/whats_a_problem_you_face_almost_every_day_that_no/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SideProject</span><span class="st">What’s a problem you face almost every day that no tool has solved well yet?</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-07T07:37:25+00:00" data-score="5" data-topic="ai" data-type="product">
 <div class="row">
 <div class="img" style="background-image:url(covers/361455287e6a.webp)"></div>
 <div class="cnt">
@@ -641,6 +762,22 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="ins">💡用AI技能做市场验证成为标准流程</div>
 <div class="sl">
 <a href="https://www.reddit.com/r/SaaS/comments/1rn3v5w/i_built_a_claude_skill_to_validate_startup_ideas/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SaaS</span><span class="st">I built a Claude skill to validate startup ideas. It killed my first idea in 10 </span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-07T07:35:01+00:00" data-score="11" data-topic="saas" data-type="analysis">
+<div class="row">
+<div class="img" style="background-image:url(covers/0759d0bd8176.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-07 15:35</span>
+</div>
+<div class="tt">VC认为SaaS正在失去护城河：AI时代SaaS壁垒讨论</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡AI降低SaaS构建门槛，护城河从技术转向分发与数据</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/SaaS/comments/1rn3uf0/saas_is_losing_its_moat_according_to_some_vcs/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SaaS</span><span class="st">SaaS is losing its moat (according to some VCs)</span></a>
 </div>
 </div>
 <div class="card hot" data-time="2026-03-07T07:33:47+00:00" data-score="10" data-topic="saas" data-type="analysis">
@@ -695,7 +832,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 <div class="card warm" data-time="2026-03-07T07:16:56+00:00" data-score="5" data-topic="saas" data-type="analysis">
 <div class="row">
-<div class="img imgf" style="--c:#16a34a"><span>🚀</span></div>
+<div class="img" style="background-image:url(covers/1afea9702fdf.webp)"></div>
 <div class="cnt">
 <div class="tags">
 <span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-07 15:16</span>
@@ -743,7 +880,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 </div>
 <div class="card warm" data-time="2026-03-07T06:47:45+00:00" data-score="4" data-topic="devtools" data-type="opensource">
 <div class="row">
-<div class="img imgf" style="--c:#2563eb"><span>🛠</span></div>
+<div class="img" style="background-image:url(covers/dbf7ed366a03.webp)"></div>
 <div class="cnt">
 <div class="tags">
 <span class="tag" style="--c:#2563eb">开发工具</span><span class="tag" style="--c:#06b6d4">开源</span><span class="tm">03-07 14:47</span>
@@ -1059,22 +1196,6 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="ins">💡端侧AI文档处理填补移动离线场景空白</div>
 <div class="sl">
 <a href="https://play.google.com/store/apps/details?id=io.cyberfly.edgedox&amp;hl=en_US" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: EdgeDox – Offline document AI on Android using Qwen3.5-0.8B</span></a>
-</div>
-</div>
-<div class="card warm" data-time="2026-03-07T05:00:17+00:00" data-score="4" data-topic="saas" data-type="tutorial">
-<div class="row">
-<div class="img imgf" style="--c:#16a34a"><span>🚀</span></div>
-<div class="cnt">
-<div class="tags">
-<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-07 13:00</span>
-</div>
-<div class="tt">开发者从失败中学到的产品洞察</div>
-<div class="sm"></div>
-</div>
-</div>
-<div class="ins">💡跨领域经验迁移到产品设计思维</div>
-<div class="sl">
-<a href="https://www.reddit.com/r/SideProject/comments/1rn0xsx/im_a_developer_who_accidentally_learned_something/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SideProject</span><span class="st">Im a developer who accidentally learned something about relationships while buil</span></a>
 </div>
 </div>
 <div class="card warm" data-time="2026-03-07T04:40:19+00:00" data-score="6" data-topic="devtools" data-type="product">
@@ -3306,6 +3427,25 @@ OpenAI can boun</span></a>
 <a href="https://www.dataqueryai.app/" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: DataQueryAI – Turn plain text into SQL locally</span></a>
 </div>
 </div>
+<div class="card warm" data-time="2026-03-06T12:15:02-08:00" data-score="4" data-topic="ai" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/3d4ef7de6495.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-07 04:15</span>
+</div>
+<div class="tt">LTX-2.3 发布：新一代创意视频生成模型</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡视频生成模型迭代持续加速</div>
+<div class="sl">
+<a href="https://www.producthunt.com/products/ltx-desktop" target="_blank" class="si"><span class="bg" style="--c:#da552f">PH</span><span class="sn">Product Hunt AI</span><span class="st">LTX Desktop</span></a>
+<a href="https://x.com/ltx_model/status/2029594765008761318" target="_blank" class="si"><span class="bg" style="--c:#555">Twitte</span><span class="sn">Twitter @huggingface</span><span class="st">@huggingface: LTX-2.3 is here.
+
+For decades, creative software has been defined </span></a>
+</div>
+</div>
 <div class="card warm" data-time="2026-03-06T12:06:00+00:00" data-score="4" data-topic="ai" data-type="product">
 <div class="row">
 <div class="img" style="background-image:url(covers/0d4a4543b5.webp)"></div>
@@ -3328,6 +3468,22 @@ OpenAI can boun</span></a>
 
 这也没多贵啊 </span></a>
 <a href="https://www.producthunt.com/products/apple" target="_blank" class="si"><span class="bg" style="--c:#555">Produc</span><span class="sn">Product Hunt Top</span><span class="st">MacBook Neo</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-06T11:53:56-08:00" data-score="8" data-topic="ai" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/bce0c30f7fa3.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-07 03:53</span>
+</div>
+<div class="tt">21st Agents SDK：AI Agent开发SDK</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡Agent SDK赛道持续涌现新玩家</div>
+<div class="sl">
+<a href="https://www.producthunt.com/products/21st-dev-the-npm-for-design-engineers" target="_blank" class="si"><span class="bg" style="--c:#da552f">PH</span><span class="sn">Product Hunt AI</span><span class="st">21st Agents SDK</span></a>
 </div>
 </div>
 <div class="card hot" data-time="2026-03-06T11:48:24+00:00" data-score="8" data-topic="ai" data-type="tutorial">
@@ -5612,24 +5768,6 @@ Spatio-Temporal Autoregressive 4K 360° Video Generation</span></a>
 A Proactive VideoLLM for Real-Time AI Companions</span></a>
 </div>
 </div>
-<div class="card warm" data-time="2026-03-06 00:27" data-score="4" data-topic="ai" data-type="product">
-<div class="row">
-<div class="img imgf" style="--c:#7c3aed"><span>🤖</span></div>
-<div class="cnt">
-<div class="tags">
-<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">2026-03-06</span>
-</div>
-<div class="tt">LTX-2.3 发布：新一代创意视频生成模型</div>
-<div class="sm"></div>
-</div>
-</div>
-<div class="ins">💡视频生成模型迭代持续加速</div>
-<div class="sl">
-<a href="https://x.com/ltx_model/status/2029594765008761318" target="_blank" class="si"><span class="bg" style="--c:#555">Twitte</span><span class="sn">Twitter @huggingface</span><span class="st">@huggingface: LTX-2.3 is here.
-
-For decades, creative software has been defined </span></a>
-</div>
-</div>
 <div class="card warm" data-time="2026-03-06 00:16" data-score="4" data-topic="ai" data-type="product">
 <div class="row">
 <div class="img imgf" style="--c:#7c3aed"><span>🤖</span></div>
@@ -7423,7 +7561,7 @@ Pretty remarkable execution!
 </div>
 </div>
 </div>
-<div class="ft">ai-news-monitor · 15:57</div>
+<div class="ft">ai-news-monitor · 16:48</div>
 </div><script>
 function togglePanel(id){document.querySelectorAll('.overlay').forEach(function(o){if(o.id===id+'-overlay'){o.classList.toggle('show')}else{o.classList.remove('show')}})}
 function closePanel(el){el.closest('.overlay').classList.remove('show')}
