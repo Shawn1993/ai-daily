@@ -68,17 +68,23 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="hdr"><h1>AI Daily</h1>
 <p>2026年03月07日 · 48h 动态</p>
 <div class="m">
-<span class="badge" onclick="togglePanel('topic')">🔥 425 主题</span>
-<span class="badge" onclick="togglePanel('source')">📊 581 信源</span>
+<span class="badge" onclick="togglePanel('topic')">🔥 430 主题</span>
+<span class="badge" onclick="togglePanel('source')">📊 587 信源</span>
 <span class="badge" onclick="togglePanel('channel')">📡 46 渠道</span>
 </div></div>
 
 <div id="topic-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="topic-list" class="panel">
 <div class="panel-head">🔥 主题列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Vibe Coding产出的代码99%对用户不安全</div>
+<div class="pl-item"><span class="tag" style="--c:#d97706">电商</span> 中国供应链采购7年经验：电商选品实战</div>
+<div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> Pre-Launch：$15/月状态页挑战Atlassian $299</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 对话式AI在MicroSaaS的可行性讨论</div>
+<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 实战：Qwen3.5 在消费级设备的部署实测</div>
+<div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> µJS：5KB零依赖替代Htmx和Turbo</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> SaaS隐藏增长飞轮：非常规获客策略</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 产品上线首日：从 5 个付费客户到 300 付费用户的里程碑</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 本地实时语音识别模型选型讨论 2026</div>
+<div class="pl-item"><span class="tag" style="--c:#0d9488">基础设施</span> Qarapace：GCP IAM审查与持久化决策工具</div>
 <div class="pl-item"><span class="tag" style="--c:#ea580c">SEO</span> 实战：10 天内让 Google 注意到新产品</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 有组织拖延症的Todo工具：反生产力设计</div>
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Git-lanes：AI编程Agent并行隔离Git工具</div>
@@ -105,7 +111,6 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> Viral.ad：产品URL一键生成UGC视频广告</div>
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> 工作与个人Git仓库统一管理工具</div>
 <div class="pl-item"><span class="tag" style="--c:#16a34a">SaaS</span> 停止扮演创始人开始真正做生意</div>
-<div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> 实战：Qwen3.5 在消费级设备的部署实测</div>
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> CC Usage Bar：macOS查看Claude Code用量工具</div>
 <div class="pl-item"><span class="tag" style="--c:#2563eb">开发工具</span> Contrabass：Go语言CLI框架开源实现</div>
 <div class="pl-item"><span class="tag" style="--c:#7c3aed">AI</span> llama.cpp合并MCP支持</div>
@@ -504,9 +509,9 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 
 </div><div id="source-overlay" class="overlay" onclick="if(event.target===this)this.classList.remove('show')"><div id="source-list" class="panel">
 <div class="panel-head">📊 信源列表 <span class="panel-close" onclick="closePanel(this)">&times;</span></div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">183</span> HN Show</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">69</span> r/LocalLLaMA</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">56</span> r/SaaS</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">186</span> HN Show</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">70</span> r/LocalLLaMA</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">57</span> r/SaaS</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">40</span> r/SideProject</div>
 <div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">25</span> HuggingFace Papers</div>
 <div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">24</span> ArXiv cs.AI</div>
@@ -527,6 +532,7 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">3</span> r/MachineLearning</div>
 <div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">3</span> r/indiehackers</div>
 <div class="pl-item"><span class="pl-count">3</span> Twitter @_akhaliq</div>
+<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">3</span> r/ecommerce</div>
 <div class="pl-item"><span class="pl-count">3</span> Twitter @karpathy</div>
 <div class="pl-item"><span class="pl-count">3</span> Twitter @emollick</div>
 <div class="pl-item"><span class="tier-badge" style="background:#e8b004">T1</span> <span class="pl-count">2</span> Google AI Blog</div>
@@ -535,7 +541,6 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="pl-item"><span class="pl-count">2</span> r/bigseo</div>
 <div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">2</span> SaaStr Blog</div>
 <div class="pl-item"><span class="tier-badge" style="background:#67c23a">T3</span> <span class="pl-count">2</span> The Verge AI</div>
-<div class="pl-item"><span class="tier-badge" style="background:#909399">T4</span> <span class="pl-count">2</span> r/ecommerce</div>
 <div class="pl-item"><span class="tier-badge" style="background:#4a9eff">T2</span> <span class="pl-count">2</span> Launching Next</div>
 <div class="pl-item"><span class="tier-badge" style="background:#e8b004">T1</span> <span class="pl-count">1</span> DeepMind Blog</div>
 <div class="pl-item"><span class="pl-count">1</span> Twitter @JeffDean</div>
@@ -622,7 +627,55 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <button class="sort-btn active" data-mode="time">🕐 时间</button>
 <button class="sort-btn" data-mode="score">🔥 重要度</button>
 </div>
-<div class="cards"><div class="card warm" data-time="2026-03-07T09:03:14+00:00" data-score="6" data-topic="saas" data-type="analysis">
+<div class="cards"><div class="card " data-time="2026-03-07T09:20:20+00:00" data-score="3" data-topic="ai" data-type="analysis">
+<div class="row">
+<div class="img imgf" style="--c:#7c3aed"><span>🤖</span></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#6366f1">分析</span><span class="tm">03-07 17:20</span>
+</div>
+<div class="tt">Vibe Coding产出的代码99%对用户不安全</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡AI生成代码的安全债正在被严重低估</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/SaaS/comments/1rn5lpv/vibecoded_stuff_is_99_unsafe_for_users/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SaaS</span><span class="st">Vibe-coded stuff is 99% unsafe for users</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-07T09:18:50+00:00" data-score="4" data-topic="ecommerce" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/11af772fb568.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#d97706">电商</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-07 17:18</span>
+</div>
+<div class="tt">中国供应链采购7年经验：电商选品实战</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡供应链老兵经验是跨境电商最稀缺的非标知识</div>
+<div class="sl">
+<a href="https://www.reddit.com/r/ecommerce/comments/1rn5kty/worked_in_china_sourcing_for_about_7_years_with/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/ecommerce</span><span class="st">Worked in china sourcing for about 7 years with ecommerce sellers. Some stuff fr</span></a>
+</div>
+</div>
+<div class="card " data-time="2026-03-07T09:08:25+00:00" data-score="3" data-topic="saas" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/b128341524df.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#16a34a">SaaS</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-07 17:08</span>
+</div>
+<div class="tt">Pre-Launch：$15/月状态页挑战Atlassian $299</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡十倍价格差切入状态页市场验证低价SaaS策略</div>
+<div class="sl">
+<a href="https://news.ycombinator.com/item?id=47285913" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Pre-Launch – $15/Mo Status Page (Vs Atlassian $299) – Join Waitlist</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-07T09:03:14+00:00" data-score="6" data-topic="saas" data-type="analysis">
 <div class="row">
 <div class="img" style="background-image:url(covers/7a6bda66c2ba.webp)"></div>
 <div class="cnt">
@@ -636,6 +689,55 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="ins">💡AI wrapper类产品同质化严重，对话式AI需找到不可替代的垂直场景</div>
 <div class="sl">
 <a href="https://www.reddit.com/r/micro_saas/comments/1rn5bom/are_conversational_ai_apps_even_viable_in/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/micro_saas</span><span class="st">Are conversational AI apps even viable in MicroSaaS anymore?</span></a>
+</div>
+</div>
+<div class="card hot" data-time="2026-03-07T08:59:53+00:00" data-score="18" data-topic="ai" data-type="tutorial">
+<div class="row">
+<div class="img" style="background-image:url(covers/df7971f905.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-07 16:59</span>
+</div>
+<div class="tt">实战：Qwen3.5 在消费级设备的部署实测</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡 商业启示：本地 AI 推理在消费级硬件上已可用</div>
+<div class="sl">
+<a href="https://github.com/sciences44/mlx-lora-finetune" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: I fine-tuned Qwen 3.5 (0.8B–4B) on a Mac for text-to-SQL – 2B beats 12B</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rll349/ran_qwen_35_9b_on_m1_pro_16gb_as_an_actual_agent/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Ran Qwen 3.5 9B on M1 Pro (16GB) as an actual agent, not just a chat demo. Hones</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkl0tl/llamabench_qwen35_models_strix_halo/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">llama-bench Qwen3.5 models strix halo</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rlgovg/qwen35122ba10bgptqint4_on_4xr9700_recipe/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-122B-A10B-GPTQ-INT4 on 4xR9700 Recipe</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkzs5v/massive_speed_gap_with_qwen3535ba3b_16_toks_on_lm/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Massive speed gap with Qwen3.5-35B-A3B: 16 tok/s on LM Studio vs 40 tok/s on bar</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rn2qlb/qwen35_27b_vs_35b_unsloth_quants_livecodebench/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5 27B vs 35B Unsloth quants - LiveCodeBench Evaluation Results</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rlerty/qwen_35_08b_2b_4b_9b_all_outputting_gibberish/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen 3.5 0.8b, 2B, 4B, 9B - All outputting gibberish after 2 - 3 turns.</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkcvqa/benchmarked_11_mlx_models_on_m3_ultra_heres_which/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Benchmarked 11 MLX models on M3 Ultra — here's which ones are actually smart and</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rn1k96/qwen3535ba3bheretic_running_surprisingly_fast_on/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-35B-A3B-Heretic running surprisingly fast on RTX 3060 Ti 8GB - is Hereti</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rn59iv/testing_benchmarking_qwen35_2k400k_context_limit/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Testing &amp; Benchmarking Qwen3.5 2k→400k Context Limit on my 4090</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rktgha/qwen3_9b_can_run_fine_on_android_phones_at_q4_0/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3 9B can run fine on android phones at q4_0</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rmzwsk/the_definitive_qwen_35_quants/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">The Definitive Qwen 3.5 Quants</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rm3vio/trying_to_create_a_house_with_qwen_35_35b_a3b/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Trying to create a house with Qwen 3.5 35B A3B</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rmu26t/qwen_35b_trying_to_recreate_scenes_from_photos_in/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen 35B trying to recreate scenes from photos in 3D!</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rle33z/some_tests_of_qwen35_on_v100s/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Some tests of Qwen3.5 on V100s</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rm53a7/qwen35_122b_a10b_my_impressions/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5 122B A10B - My impressions</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rlcgie/qwen35_9b_for_pixel_910_pro/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5 9B for Pixel 9/10 Pro</span></a>
+<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rm93rg/quick_qwen35ba3b_test/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Quick Qwen-35B-A3B Test</span></a>
+</div>
+</div>
+<div class="card warm" data-time="2026-03-07T08:59:11+00:00" data-score="4" data-topic="devtools" data-type="opensource">
+<div class="row">
+<div class="img imgf" style="--c:#2563eb"><span>🛠</span></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#2563eb">开发工具</span><span class="tag" style="--c:#06b6d4">开源</span><span class="tm">03-07 16:59</span>
+</div>
+<div class="tt">µJS：5KB零依赖替代Htmx和Turbo</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡极简前端交互库瞄准Htmx臃肿化后的轻量需求</div>
+<div class="sl">
+<a href="https://mujs.org" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: µJS, a 5KB alternative to Htmx and Turbo with zero dependencies</span></a>
 </div>
 </div>
 <div class="card " data-time="2026-03-07T08:54:05+00:00" data-score="3" data-topic="saas" data-type="tutorial">
@@ -692,6 +794,22 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="sl">
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rn54u6/hosting_ai_locally_how_do_i_do_that_some_other/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">hosting ai locally , how do i do that (+ some other questions)</span></a>
 <a href="https://www.reddit.com/r/LocalLLaMA/comments/1rm36ew/whats_the_best_local_asr_model_for_realtime/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">What's the best local ASR model for real-time dictation in 2026? Is Parakeet TDT</span></a>
+</div>
+</div>
+<div class="card " data-time="2026-03-07T08:44:24+00:00" data-score="3" data-topic="infra" data-type="product">
+<div class="row">
+<div class="img" style="background-image:url(covers/8d50ab03b5ba.webp)"></div>
+<div class="cnt">
+<div class="tags">
+<span class="tag" style="--c:#0d9488">基础设施</span><span class="tag" style="--c:#3b82f6">产品发布</span><span class="tm">03-07 16:44</span>
+</div>
+<div class="tt">Qarapace：GCP IAM审查与持久化决策工具</div>
+<div class="sm"></div>
+</div>
+</div>
+<div class="ins">💡云权限审计从一次性变为持续追踪是合规刚需</div>
+<div class="sl">
+<a href="https://qarapace.com/" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: Qarapace – GCP IAM reviews with persistent decisions and audit trails</span></a>
 </div>
 </div>
 <div class="card hot" data-time="2026-03-07T08:40:00+00:00" data-score="13" data-topic="seo" data-type="tutorial">
@@ -1114,38 +1232,6 @@ h2 i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 <div class="ins">💡创始人身份认同陷阱阻碍实际业务增长</div>
 <div class="sl">
 <a href="https://www.reddit.com/r/SaaS/comments/1rn2s49/stop_playing_founder_and_start_building_a_business/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/SaaS</span><span class="st">Stop playing 'Founder' and start building a business.</span></a>
-</div>
-</div>
-<div class="card hot" data-time="2026-03-07T06:33:17+00:00" data-score="18" data-topic="ai" data-type="tutorial">
-<div class="row">
-<div class="img" style="background-image:url(covers/df7971f905.webp)"></div>
-<div class="cnt">
-<div class="tags">
-<span class="tag" style="--c:#7c3aed">AI</span><span class="tag" style="--c:#10b981">实战</span><span class="tm">03-07 14:33</span>
-</div>
-<div class="tt">实战：Qwen3.5 在消费级设备的部署实测</div>
-<div class="sm"></div>
-</div>
-</div>
-<div class="ins">💡 商业启示：本地 AI 推理在消费级硬件上已可用</div>
-<div class="sl">
-<a href="https://github.com/sciences44/mlx-lora-finetune" target="_blank" class="si"><span class="bg" style="--c:#ff6600">HN</span><span class="sn">HN Show</span><span class="st">Show HN: I fine-tuned Qwen 3.5 (0.8B–4B) on a Mac for text-to-SQL – 2B beats 12B</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rll349/ran_qwen_35_9b_on_m1_pro_16gb_as_an_actual_agent/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Ran Qwen 3.5 9B on M1 Pro (16GB) as an actual agent, not just a chat demo. Hones</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkl0tl/llamabench_qwen35_models_strix_halo/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">llama-bench Qwen3.5 models strix halo</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rlgovg/qwen35122ba10bgptqint4_on_4xr9700_recipe/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-122B-A10B-GPTQ-INT4 on 4xR9700 Recipe</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkzs5v/massive_speed_gap_with_qwen3535ba3b_16_toks_on_lm/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Massive speed gap with Qwen3.5-35B-A3B: 16 tok/s on LM Studio vs 40 tok/s on bar</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rn2qlb/qwen35_27b_vs_35b_unsloth_quants_livecodebench/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5 27B vs 35B Unsloth quants - LiveCodeBench Evaluation Results</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rlerty/qwen_35_08b_2b_4b_9b_all_outputting_gibberish/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen 3.5 0.8b, 2B, 4B, 9B - All outputting gibberish after 2 - 3 turns.</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rkcvqa/benchmarked_11_mlx_models_on_m3_ultra_heres_which/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Benchmarked 11 MLX models on M3 Ultra — here's which ones are actually smart and</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rn1k96/qwen3535ba3bheretic_running_surprisingly_fast_on/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5-35B-A3B-Heretic running surprisingly fast on RTX 3060 Ti 8GB - is Hereti</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rktgha/qwen3_9b_can_run_fine_on_android_phones_at_q4_0/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3 9B can run fine on android phones at q4_0</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rmzwsk/the_definitive_qwen_35_quants/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">The Definitive Qwen 3.5 Quants</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rm3vio/trying_to_create_a_house_with_qwen_35_35b_a3b/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Trying to create a house with Qwen 3.5 35B A3B</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rmu26t/qwen_35b_trying_to_recreate_scenes_from_photos_in/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen 35B trying to recreate scenes from photos in 3D!</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rle33z/some_tests_of_qwen35_on_v100s/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Some tests of Qwen3.5 on V100s</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rm53a7/qwen35_122b_a10b_my_impressions/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5 122B A10B - My impressions</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rlcgie/qwen35_9b_for_pixel_910_pro/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Qwen3.5 9B for Pixel 9/10 Pro</span></a>
-<a href="https://www.reddit.com/r/LocalLLaMA/comments/1rm93rg/quick_qwen35ba3b_test/" target="_blank" class="si"><span class="bg" style="--c:#ff4500">Reddit</span><span class="sn">r/LocalLLaMA</span><span class="st">Quick Qwen-35B-A3B Test</span></a>
 </div>
 </div>
 <div class="card hot" data-time="2026-03-07T06:15:47+00:00" data-score="8" data-topic="devtools" data-type="opensource">
@@ -7615,7 +7701,7 @@ Pretty remarkable execution!
 </div>
 </div>
 </div>
-<div class="ft">ai-news-monitor · 17:16</div>
+<div class="ft">ai-news-monitor · 17:32</div>
 </div><script>
 function togglePanel(id){document.querySelectorAll('.overlay').forEach(function(o){if(o.id===id+'-overlay'){o.classList.toggle('show')}else{o.classList.remove('show')}})}
 function closePanel(el){el.closest('.overlay').classList.remove('show')}
